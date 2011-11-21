@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Letter outlines</title>
+	<link rel="stylesheet" href="../css/style2.css">
+	<script type="text/javascript" src="../../lib/paper.js"></script>
+	<script type="text/paperscript" canvas="canvas">
+			
+	/*
+	visual work progress report
+	written by Dealga McArdle 2011, November.
+	MIT license
+	
+	A serif font, spelling typography.  The type face isn't intended to replicate any
+	existing face. Coded from scratch, by hand.
+	
+	15 Nov, start T
+	16 Nov, completed T and y
+	
+	*/
+	
+	// Global variables
+	var layer2 = new Layer(); // background layer
+	var layer1 = new Layer(); // top layer
+	
+	
+	
+	function draw_t_cap(point){
+	
+		var path = new Path();
+	
+		// roof
+		path.add(point);
+		path.add(point + [200, 0]);  
+		path.add(point + [205, 31]);   
+		path.add(point + [200, 31]);
+		
+		path.cubicCurveTo(point + [175,10], point + [135, 6], point + [113, 10]);
+		path.add(point +[113,170]);
+
+		// base
+		path.cubicCurveTo(point + [113,193], point + [125,193], point + [148, 193]);
+		path.add(point + [150, 199]); 
+		path.add(point + [50, 199]);
+		path.add(point + [52, 193]);
+		path.cubicCurveTo(point + [75,193], point + [87,193], point + [87, 170]);
+		path.add(point + [87, 10]);
+		
+		// left under t junction
+		path.cubicCurveTo(point + [65, 6], point + [25, 10], point + [0,31]);
+		path.add(point + [-5, 31]);
+				
+		// path settings
+		path.closed = true;
+		path.fillColor = 'black';
+		path.strokeColor = 'black';
+	
+		// return path;	
+	}
+	
+		
+	function draw_y_lower(point){
+	
+		var path = new Path();
+		path.add(point + [0, 50]);
+		path.add(point + [51, 50]);
+		
+		path.add(point + [49, 56]);
+		path.cubicCurveTo(point + [42, 57], point + [35, 58], point + [39, 66]);
+		
+		path.add(point + [96, 174]);
+		path.add(point + [135, 66 ]); // up before the curve
+		path.cubicCurveTo(point + [135, 58], point + [125, 56], point + [125, 56]);
+		path.add(point + [123, 50]);
+		path.add(point + [174, 50]);
+		
+		path.add(point + [172, 56]);
+		path.cubicCurveTo(point + [165, 56], point + [144,60], point + [138, 80]);
+		
+		path.add(point + [91, 210]);
+		
+		// descender
+		path.cubicCurveTo(point + [76, 250], point + [53, 256], point + [35, 245]);
+		path.add(point + [42, 225]);
+		path.cubicCurveTo(point + [42,210], point + [66,263], point + [87, 197]);
+		
+		// going up, corner sharp
+		path.add(point + [25, 80]);
+		
+		// top left, lower serif.
+		path.cubicCurveTo(point + [15,60], point + [10,56], point + [2,56]);
+		
+		// path settings
+		path.closed = true;
+		path.fillColor = 'black';
+		path.strokeColor = 'black';
+		
+				
+	}
+	
+	
+	// path.cubicCurveTo(point + [x,y], point + [x,y], point + [x,y]);
+	
+	function draw_p_lower(point){
+	
+		// compound path.
+		// outer coordinates.
+		var path = new Path();
+		
+		path.add(point + [4, 69]); // just under top. left most
+		path.add(point + [2, 63]);	// top. left most
+		
+		// top spine.
+		path.add(point + [39, 50]);
+		path.add(point + [39, 82]);
+	
+		// the eye
+		path.cubicCurveTo(point + [54, 50], point + [91, 50], point + [96, 50]);	// first quarter
+		path.cubicCurveTo(point + [107, 50], point + [153, 62], point + [153, 122]);  	// second quarter
+		path.cubicCurveTo(point + [153, 142], point + [145, 199], point + [80, 199]);  
+		path.cubicCurveTo(point + [72, 196], point + [59, 199], point + [39, 179]);
+		
+		// descender
+		path.add(point + [39, 229]);
+		
+		// foot
+		// [todo]
+		// path.add(point + [39,245]);
+		
+		// descender, going back up
+		path.add(point + [19, 229]);
+		path.add(point + [19, 80]);
+		
+		// connect to serif
+		path.cubicCurveTo(point + [19,70], point + [4,69], point + [4,69]);
+		// end of outer coordinates.
+		
+		// inner coordinates.
+		var innerPath = new Path();
+		innerPath.add(point + [39, 112]);
+		innerPath.cubicCurveTo(point + [39, 70], point + [72, 60], point + [84, 60]); // ok
+		innerPath.cubicCurveTo(point + [118, 60], point + [134, 100], point + [134, 124]); // done
+		innerPath.cubicCurveTo(point + [134, 151], point + [120, 192], point + [85, 192]);
+		innerPath.cubicCurveTo(point + [53, 192], point + [39, 158], point + [39, 136]);
+		innerPath.add(point + [39, 64]);
+		innerPath.close = true;
+	
+	
+		var compoundPath = new CompoundPath([path, innerPath]);
+		compoundPath.fillColor = 'black';
+		compoundPath.strokeColor = 'black';
+		path.selected = true;
+	}
+	
+		
+	
+	function draw_typography(point){
+	
+		// center line is x:150 , all points are relative to 0,0
+	
+		layer1.activate();
+		draw_t_cap(point);
+		draw_y_lower(point+[200,0]);
+		draw_p_lower(point+[389,0]);
+		
+	}
+	
+	
+	function main(){
+		var point = new Point(50,50);
+		draw_typography(point);
+		
+	}
+	
+	
+	
+	main();
+	
+	</script>
+</head>
+<body>
+	<canvas id="canvas" width="700" height="1900"></canvas>
+
+</body>
+</html>
+
+
+
+

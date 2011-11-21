@@ -1,0 +1,8 @@
+title: About Dealga McArdle
+-
+content: 
+Python sucked me in bigtime, and so has Blender because its API is exposed via Python. 
+I have a few blogs that i use to share code and various projects.<br>
+- Code/tutorials are posted at (<a href="http://blenderscripting.blogspot.com/"><em>blenderscripting</em></a>)<br>
+- I use blender to create 3d models (<a href="http://digitalaphasia.blogspot.com/"><em>code ramblings and 3d</em></a>)<br> 
+- Lately i've been getting into javascript and (<a href="http://paperjsandtypography.blogspot.com/2011/11/paperjs-generative.html"><em>paper.js and typography</em></a>)<br>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Apt Progress</title>
+	<link rel="stylesheet" href="../css/style2.css">
+	<script type="text/javascript" src="../../lib/paper.js"></script>
+	<script type="text/paperscript" canvas="canvas">
+			
+	/*
+	regen of triangles.
+	this one is for you.
+	written by Dealga McArdle 2011, November.
+	MIT license
+	
+	The idea is:
+	- semi random triangles, 
+	- semi random gradient parameters 
+	- semi distributed colours
+	- all contained mostly in a circular boundary
+	- white typography ontop. ( DigitalAphasia )
+	- [optional, make it move.]
+	
+	12 Nov, exploration of paper.js
+	
+	Milestsones.
+	[ ] place 50 triangles within a circular boundary.
+	[ ] random size 
+	[ ] random gradient 
+	[ ] random rotation
+
+	
+	*/
+	
+	// Layer inits
+	// var layerBackground = new Layer(); // background layer
+	// var layerTop = new Layer(); // top layer
+	
+	
+	function draw_triangle(point){
+		/*
+		point is center. let's build a triangle around it.
+		*/
+	
+		var segments = [new Point(50, 75), new Point(100, 25),new Point(150, 75)]; 
+		var myPath = new Path(segments);
+		myPath.strokeColor = 'black';
+		myPath.strokeColor.alpha = 0;
+		myPath.closed = true;
+		
+		var topLeft = new Point(50, 25);
+		var bottomLeft = new Point(50, 75);
+		
+		var myGradient = new Gradient(['#FE0000', '#Fe3645']);
+		myPath.fillColor = new GradientColor(myGradient, topLeft, bottomLeft);
+		myPath.position = point;
+			
+		console.log(point.x, point.y);
+		// console.log(myPath.segments[0].point.x); // get current x
+		
+		// var topLeft = 
+		// var bottomLeft =
+	}
+	
+	
+	function main(){
+		
+		// draw within circular boundary.
+		for (i=0; i < 150; i++){
+			// random between 0 and 1
+			var x = Math.random(0,1);
+			var y = Math.random(0,1);
+			var radiusPosX = Math.random(0, 200);
+			var radiusPosY = Math.random(0, 200);
+			var posX = (radiusPosX * Math.sin(x) * 400) + 200;
+			var posY= (radiusPosY * Math.cos(y) * 400) + 200;
+			
+			// if midmpoint is 200,200
+			
+			var point = new Point(posX, posY);
+			draw_triangle(point);
+		}
+	}
+	
+	main();
+		
+	</script>
+</head>
+<body>
+	<canvas id="canvas" width="700" height="1200"></canvas>
+
+</body>
+</html>
+
+
+
+

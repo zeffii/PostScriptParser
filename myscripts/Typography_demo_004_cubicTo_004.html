@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Letter outlines</title>
+	<link rel="stylesheet" href="../css/style2.css">
+	<script type="text/javascript" src="../../lib/paper.js"></script>
+	<script type="text/paperscript" canvas="canvas">
+			
+	/*
+	visual work progress report
+	written by Dealga McArdle 2011, November.
+	MIT license
+	
+	14 Nov, start.
+	*/
+	
+	// Global variables
+	var layer2 = new Layer(); // background layer
+	var layer1 = new Layer(); // top layer
+	
+	
+	
+	function draw_t_cap(point){
+	
+		var path_001 = new Path();
+	
+		// roof
+		path_001.add(point);
+		path_001.add(point + [200, 0]);  
+		path_001.add(point + [205, 31]);   
+		path_001.add(point + [200, 31]);
+		
+		path_001.cubicCurveTo(point + [175,10], point + [135, 6], point + [113, 10]);
+		path_001.add(point +[113,170]);
+
+		// base
+		path_001.cubicCurveTo(point + [113,193], point + [125,193], point + [148, 193]);
+		path_001.add(point + [150, 199]); 
+		path_001.add(point + [50, 199]);
+		path_001.add(point + [52, 193]);
+		path_001.cubicCurveTo(point + [75,193], point + [87,193], point + [87, 170]);
+		path_001.add(point + [87, 10]);
+		
+		// left under t junction
+		path_001.cubicCurveTo(point + [65, 6], point + [25, 10], point + [0,31]);
+		path_001.add(point + [-5, 31]);
+				
+		// path settings
+		path_001.closed = true;
+		path_001.fillColor = 'black';
+		path_001.strokeColor = 'black';
+	
+		
+	}
+	
+	
+	
+	
+	
+	function draw_typography(point){
+	
+		// center line is x:150 , all points are relative to 0,0
+	
+		layer1.activate();
+		draw_t_cap(point);
+		// draw_y_lower(point+[200,0]);
+		}
+	
+	
+	function main(){
+		var point = new Point(50,50);
+		draw_typography(point);
+		
+	}
+	
+	
+	
+	main();
+	
+	</script>
+</head>
+<body>
+	<canvas id="canvas" width="700" height="1900"></canvas>
+
+</body>
+</html>
+
+
+
+

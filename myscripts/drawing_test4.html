@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>drawing_test4.html</title>
+	<link rel="stylesheet" href="../css/style2.css">
+	<script type="text/javascript" src="../../lib/paper.js"></script>
+	<script type="text/paperscript" canvas="canvas">
+
+function sortOnBoundsSize(p1, p2){
+
+    x = (p1.bounds.width * p1.bounds.height);
+    y = (p2.bounds.width * p2.bounds.height);
+
+    if (x < y)
+        return 1;
+    else if (x==y)
+        return 0;
+    else
+        return -1;
+
+}
+
+
+function draw_glyph_0(){
+    var point = new Point(0, 0);
+    var path0 = new Path();
+    path0.moveTo(point + [50.105, 78.88]);
+    path0.cubicCurveTo(point + [50.105, 84.111], point + [51.023, 87.802], point + [52.859, 89.958]);
+    path0.cubicCurveTo(point + [54.695, 92.114], point + [58.227, 93.47], point + [63.461, 94.021]);
+    path0.lineTo(point + [64.012, 94.986]);
+    path0.lineTo(point + [63.043, 95.95]);
+    path0.lineTo(point + [25.605, 95.95]);
+    path0.lineTo(point + [24.641, 94.986]);
+    path0.lineTo(point + [25.188, 94.021]);
+    path0.cubicCurveTo(point + [30.422, 93.47], point + [33.953, 92.114], point + [35.789, 89.958]);
+    path0.cubicCurveTo(point + [37.625, 87.802], point + [38.543, 84.111], point + [38.543, 78.88]);
+    path0.lineTo(point + [38.543, 15.833]);
+    path0.cubicCurveTo(point + [34.137, 14.181], point + [28.586, 13.357], point + [21.887, 13.357]);
+    path0.cubicCurveTo(point + [11.789, 13.357], point + [5.23, 18.036], point + [2.203, 27.396]);
+    path0.lineTo(point + [0, 27.532]);
+    path0.lineTo(point + [3.301, 7.986]);
+    path0.lineTo(point + [4.82, 7.986]);
+    path0.cubicCurveTo(point + [5, 8.72], point + [5.734, 9.087], point + [7.02, 9.087]);
+    path0.lineTo(point + [81.492, 9.087]);
+    path0.cubicCurveTo(point + [82.777, 9.087], point + [83.512, 8.72], point + [83.695, 7.986]);
+    path0.lineTo(point + [85.207, 7.986]);
+    path0.lineTo(point + [88.516, 27.532]);
+    path0.lineTo(point + [86.586, 27.673]);
+    path0.cubicCurveTo(point + [83.281, 18.126], point + [76.629, 13.357], point + [66.625, 13.357]);
+    path0.cubicCurveTo(point + [60.016, 13.357], point + [54.512, 14.181], point + [50.105, 15.833]);
+    path0.closePath();
+    path0.moveTo(point + [50.105, 78.88]);
+    path0.fillColor = 'black';
+}
+draw_glyph_0();
+
+
+function draw_glyph_1(){
+    var point = new Point(0, 0);
+    var path0 = new Path();
+    path0.moveTo(point + [144.578, 35.931]);
+    path0.lineTo(point + [143.609, 34.693]);
+    path0.lineTo(point + [144.164, 33.314]);
+    path0.lineTo(point + [154.348, 33.728]);
+    path0.lineTo(point + [164.676, 33.314]);
+    path0.lineTo(point + [165.5, 34.552]);
+    path0.lineTo(point + [164.953, 35.653]);
+    path0.cubicCurveTo(point + [160.27, 37.583], point + [156.094, 42.677], point + [152.426, 50.939]);
+    path0.lineTo(point + [126.68, 109.439]);
+    path0.cubicCurveTo(point + [121.906, 120.271], point + [115.207, 125.685], point + [106.582, 125.685]);
+    path0.cubicCurveTo(point + [104.75, 125.685], point + [103.465, 124.814], point + [102.727, 123.068]);
+    path0.cubicCurveTo(point + [103.277, 120.13], point + [104.793, 117.329], point + [107.273, 114.669]);
+    path0.lineTo(point + [109.195, 115.771]);
+    path0.cubicCurveTo(point + [109.84, 116.138], point + [110.621, 116.321], point + [111.539, 116.321]);
+    path0.cubicCurveTo(point + [115.207, 115.954], point + [118.281, 114.212], point + [120.762, 111.091]);
+    path0.cubicCurveTo(point + [123.238, 107.97], point + [124.48, 104.528], point + [124.48, 100.771]);
+    path0.lineTo(point + [126.402, 92.372]);
+    path0.lineTo(point + [105.344, 48.868]);
+    path0.cubicCurveTo(point + [103.598, 45.196], point + [102.129, 42.583], point + [100.938, 41.021]);
+    path0.cubicCurveTo(point + [99.012, 38.361], point + [96.625, 36.665], point + [93.777, 35.931]);
+    path0.lineTo(point + [92.816, 34.693]);
+    path0.lineTo(point + [93.367, 33.314]);
+    path0.lineTo(point + [105.754, 33.728]);
+    path0.lineTo(point + [118.008, 33.314]);
+    path0.lineTo(point + [118.832, 34.552]);
+    path0.lineTo(point + [118.281, 35.653]);
+    path0.cubicCurveTo(point + [114.887, 36.392], point + [113.008, 37.583], point + [112.641, 39.232]);
+    path0.lineTo(point + [112.641, 39.923]);
+    path0.cubicCurveTo(point + [112.641, 41.849], point + [113.422, 44.372], point + [114.98, 47.493]);
+    path0.lineTo(point + [133.426, 84.525]);
+    path0.lineTo(point + [148.707, 50.798]);
+    path0.cubicCurveTo(point + [150.266, 47.31], point + [151.047, 44.419], point + [151.047, 42.122]);
+    path0.cubicCurveTo(point + [151.047, 41.298], point + [150.91, 40.611], point + [150.633, 40.06]);
+    path0.cubicCurveTo(point + [149.898, 38.04], point + [147.879, 36.665], point + [144.578, 35.931]);
+    path0.closePath();
+    path0.moveTo(point + [144.578, 35.931]);
+    path0.fillColor = 'black';
+}
+draw_glyph_1();
+
+
+function draw_glyph_2(){
+    var point = new Point(0, 0);
+    var path0 = new Path();
+    path0.moveTo(point + [187.527, 89.341]);
+    path0.lineTo(point + [187.527, 108.751]);
+    path0.cubicCurveTo(point + [187.527, 113.157], point + [188.031, 116.368], point + [189.039, 118.388]);
+    path0.cubicCurveTo(point + [190.418, 121.232], point + [193.035, 122.931], point + [196.887, 123.478]);
+    path0.lineTo(point + [197.988, 124.583]);
+    path0.lineTo(point + [197.438, 125.548]);
+    path0.lineTo(point + [168.809, 125.548]);
+    path0.lineTo(point + [168.254, 124.583]);
+    path0.lineTo(point + [168.941, 123.478]);
+    path0.cubicCurveTo(point + [172.52, 122.931], point + [175, 121.189], point + [176.379, 118.247]);
+    path0.cubicCurveTo(point + [177.293, 116.232], point + [177.75, 113.064], point + [177.75, 108.751]);
+    path0.lineTo(point + [177.75, 49.833]);
+    path0.cubicCurveTo(point + [177.75, 43.958], point + [176.148, 40.747], point + [172.938, 40.2]);
+    path0.lineTo(point + [170.598, 39.782]);
+    path0.lineTo(point + [170.043, 38.411]);
+    path0.lineTo(point + [170.457, 37.861]);
+    path0.lineTo(point + [185.738, 32.489]);
+    path0.lineTo(point + [186.977, 32.489]);
+    path0.lineTo(point + [186.977, 46.943]);
+    path0.cubicCurveTo(point + [193.676, 36.943], point + [202.117, 31.939], point + [212.305, 31.939]);
+    path0.cubicCurveTo(point + [220.473, 31.939], point + [227.266, 35.036], point + [232.68, 41.232]);
+    path0.cubicCurveTo(point + [238.094, 47.423], point + [240.801, 54.65], point + [240.801, 62.911]);
+    path0.cubicCurveTo(point + [240.801, 72.271], point + [237.566, 80.325], point + [231.094, 87.071]);
+    path0.cubicCurveTo(point + [224.625, 93.818], point + [216.711, 97.189], point + [207.352, 97.189]);
+    path0.cubicCurveTo(point + [199.367, 97.189], point + [192.758, 94.575], point + [187.527, 89.341]);
+    path0.closePath();
+
+    var path1 = new Path();
+    path1.moveTo(point + [187.527, 73.786]);
+    path1.cubicCurveTo(point + [188.352, 79.478], point + [190.695, 84.157], point + [194.547, 87.829]);
+    path1.cubicCurveTo(point + [198.402, 91.497], point + [203.125, 93.333], point + [208.727, 93.333]);
+    path1.cubicCurveTo(point + [215.703, 93.333], point + [221.07, 90.443], point + [224.832, 84.661]);
+    path1.cubicCurveTo(point + [228.043, 79.798], point + [229.648, 73.696], point + [229.652, 66.353]);
+    path1.cubicCurveTo(point + [229.648, 58.462], point + [227.953, 51.853], point + [224.559, 46.528]);
+    path1.cubicCurveTo(point + [220.613, 40.29], point + [214.922, 37.169], point + [207.484, 37.169]);
+    path1.cubicCurveTo(point + [201.98, 37.169], point + [197.438, 39.142], point + [193.859, 43.091]);
+    path1.cubicCurveTo(point + [190.738, 46.486], point + [188.629, 51.071], point + [187.527, 56.857]);
+    path1.closePath();
+    path1.moveTo(point + [187.527, 73.786]);
+
+    var unsortedPathList = [path0, path1];
+    var sortedPathList = unsortedPathList.sort(sortOnBoundsSize);
+    var compoundPath = new CompoundPath(sortedPathList);
+    compoundPath.fillColor = 'black';
+    compoundPath.strokeColor = 'black';
+}
+draw_glyph_2();
+
+
+function draw_glyph_3(){
+    var point = new Point(0, 0);
+    var path0 = new Path();
+    path0.moveTo(point + [322.438, 64.837]);
+    path0.cubicCurveTo(point + [322.438, 74.384], point + [319.066, 82.228], point + [312.32, 88.376]);
+    path0.cubicCurveTo(point + [305.574, 94.528], point + [297.383, 97.603], point + [287.746, 97.603]);
+    path0.cubicCurveTo(point + [278.109, 97.603], point + [269.988, 94.571], point + [263.379, 88.513]);
+    path0.cubicCurveTo(point + [256.5, 82.275], point + [253.059, 74.384], point + [253.059, 64.837]);
+    path0.cubicCurveTo(point + [253.059, 55.294], point + [256.5, 47.4], point + [263.379, 41.161]);
+    path0.cubicCurveTo(point + [269.988, 35.013], point + [278.109, 31.939], point + [287.746, 31.939]);
+    path0.cubicCurveTo(point + [297.383, 31.939], point + [305.574, 35.036], point + [312.32, 41.232]);
+    path0.cubicCurveTo(point + [319.066, 47.423], point + [322.438, 55.294], point + [322.438, 64.837]);
+    path0.closePath();
+
+    var path1 = new Path();
+    path1.moveTo(point + [310.734, 64.837]);
+    path1.cubicCurveTo(point + [310.645, 57.036], point + [308.625, 50.337], point + [304.68, 44.739]);
+    path1.cubicCurveTo(point + [300.273, 38.407], point + [294.309, 35.243], point + [286.785, 35.243]);
+    path1.cubicCurveTo(point + [279.164, 35.243], point + [273.43, 38.407], point + [269.578, 44.739]);
+    path1.cubicCurveTo(point + [266.273, 50.064], point + [264.664, 56.763], point + [264.758, 64.837]);
+    path1.cubicCurveTo(point + [264.852, 72.732], point + [266.871, 79.431], point + [270.816, 84.935]);
+    path1.cubicCurveTo(point + [275.219, 91.177], point + [281.184, 94.298], point + [288.707, 94.298]);
+    path1.cubicCurveTo(point + [296.324, 94.298], point + [302.063, 91.134], point + [305.914, 84.802]);
+    path1.cubicCurveTo(point + [309.219, 79.478], point + [310.824, 72.821], point + [310.734, 64.837]);
+    path1.closePath();
+    path1.moveTo(point + [310.734, 64.837]);
+
+    var unsortedPathList = [path0, path1];
+    var sortedPathList = unsortedPathList.sort(sortOnBoundsSize);
+    var compoundPath = new CompoundPath(sortedPathList);
+    compoundPath.fillColor = 'black';
+    compoundPath.strokeColor = 'black';
+}
+draw_glyph_3();
+
+
+function draw_glyph_4(){
+    var point = new Point(0, 0);
+    var path0 = new Path();
+    path0.moveTo(point + [364.793, 34.415]);
+    path0.cubicCurveTo(point + [359.102, 34.415], point + [354.746, 36.091], point + [351.715, 39.443]);
+    path0.cubicCurveTo(point + [348.688, 42.79], point + [347.172, 47.357], point + [347.172, 53.138]);
+    path0.cubicCurveTo(point + [347.172, 59.196], point + [348.688, 64.06], point + [351.715, 67.728]);
+    path0.cubicCurveTo(point + [355.02, 71.767], point + [359.609, 73.786], point + [365.48, 73.786]);
+    path0.cubicCurveTo(point + [376.863, 73.786], point + [382.555, 67.364], point + [382.555, 54.517]);
+    path0.cubicCurveTo(point + [382.555, 48.552], point + [381.039, 43.708], point + [378.012, 39.989]);
+    path0.cubicCurveTo(point + [374.98, 36.275], point + [370.574, 34.415], point + [364.793, 34.415]);
+    path0.closePath();
+
+    var path1 = new Path();
+    path1.moveTo(point + [336.711, 54.517]);
+    path1.cubicCurveTo(point + [336.711, 47.818], point + [339.695, 42.263], point + [345.66, 37.861]);
+    path1.cubicCurveTo(point + [351.074, 33.821], point + [357.266, 31.802], point + [364.242, 31.802]);
+    path1.cubicCurveTo(point + [370.758, 31.802], point + [376.129, 32.903], point + [380.348, 35.103]);
+    path1.cubicCurveTo(point + [388.148, 31.525], point + [395.125, 29.736], point + [401.273, 29.736]);
+    path1.cubicCurveTo(point + [401.914, 29.736], point + [402.234, 30.376], point + [402.234, 31.661]);
+    path1.cubicCurveTo(point + [402.234, 33.868], point + [402.008, 35.704], point + [401.551, 37.169]);
+    path1.lineTo(point + [400.723, 39.782]);
+    path1.cubicCurveTo(point + [399.254, 39.782], point + [396.891, 39.255], point + [393.633, 38.2]);
+    path1.cubicCurveTo(point + [390.375, 37.146], point + [387.965, 36.618], point + [386.406, 36.618]);
+    path1.cubicCurveTo(point + [385.488, 36.618], point + [384.477, 36.528], point + [383.375, 36.341]);
+    path1.lineTo(point + [382.688, 36.341]);
+    path1.cubicCurveTo(point + [383.238, 36.618], point + [383.973, 37.126], point + [384.895, 37.861]);
+    path1.cubicCurveTo(point + [390.309, 41.896], point + [393.012, 47.31], point + [393.016, 54.099]);
+    path1.cubicCurveTo(point + [393.012, 61.165], point + [389.938, 66.763], point + [383.789, 70.896]);
+    path1.cubicCurveTo(point + [378.469, 74.568], point + [372.137, 76.403], point + [364.793, 76.403]);
+    path1.cubicCurveTo(point + [362.039, 76.403], point + [359.699, 76.173], point + [357.773, 75.716]);
+    path1.cubicCurveTo(point + [351.805, 77.548], point + [348.824, 79.337], point + [348.824, 81.083]);
+    path1.cubicCurveTo(point + [348.824, 84.571], point + [356.074, 86.45], point + [370.578, 86.724]);
+    path1.cubicCurveTo(point + [379.293, 86.911], point + [385.809, 87.689], point + [390.125, 89.064]);
+    path1.cubicCurveTo(point + [397.648, 91.45], point + [401.41, 95.95], point + [401.41, 102.56]);
+    path1.cubicCurveTo(point + [401.41, 110.54], point + [396.641, 116.642], point + [387.094, 120.864]);
+    path1.cubicCurveTo(point + [379.75, 124.079], point + [371.492, 125.685], point + [362.316, 125.685]);
+    path1.cubicCurveTo(point + [355.25, 125.685], point + [349.098, 124.677], point + [343.871, 122.657]);
+    path1.cubicCurveTo(point + [336.527, 119.81], point + [332.855, 115.361], point + [332.855, 109.302]);
+    path1.cubicCurveTo(point + [332.855, 103.614], point + [339.004, 98.2], point + [351.301, 93.06]);
+    path1.cubicCurveTo(point + [350.203, 92.876], point + [348.918, 92.552], point + [347.449, 92.095]);
+    path1.cubicCurveTo(point + [342.035, 90.532], point + [339.324, 88.009], point + [339.324, 84.525]);
+    path1.cubicCurveTo(point + [339.324, 81.954], point + [341.207, 79.708], point + [344.973, 77.778]);
+    path1.cubicCurveTo(point + [347.633, 76.403], point + [350.246, 75.302], point + [352.82, 74.474]);
+    path1.cubicCurveTo(point + [342.082, 70.345], point + [336.711, 63.693], point + [336.711, 54.517]);
+    path1.closePath();
+
+    var path2 = new Path();
+    path2.moveTo(point + [358.871, 94.161]);
+    path2.cubicCurveTo(point + [353.824, 95.536], point + [350.203, 96.911], point + [348, 98.29]);
+    path2.cubicCurveTo(point + [344.145, 100.677], point + [342.215, 103.751], point + [342.215, 107.513]);
+    path2.cubicCurveTo(point + [342.215, 112.47], point + [345.246, 116.278], point + [351.301, 118.939]);
+    path2.cubicCurveTo(point + [356.074, 121.048], point + [361.215, 122.107], point + [366.719, 122.107]);
+    path2.cubicCurveTo(point + [372.684, 122.107], point + [378.238, 120.911], point + [383.375, 118.525]);
+    path2.cubicCurveTo(point + [389.801, 115.497], point + [393.012, 111.321], point + [393.016, 105.997]);
+    path2.cubicCurveTo(point + [393.012, 98.747], point + [384.25, 94.939], point + [366.719, 94.571]);
+    path2.cubicCurveTo(point + [363.047, 94.482], point + [360.434, 94.341], point + [358.871, 94.161]);
+    path2.closePath();
+    path2.moveTo(point + [358.871, 94.161]);
+
+    var unsortedPathList = [path0, path1, path2];
+    var sortedPathList = unsortedPathList.sort(sortOnBoundsSize);
+    var compoundPath = new CompoundPath(sortedPathList);
+    compoundPath.fillColor = 'black';
+    compoundPath.strokeColor = 'black';
+}
+draw_glyph_4();
+
+
+function draw_glyph_5(){
+    var point = new Point(0, 0);
+    var path0 = new Path();
+    path0.moveTo(point + [427.266, 79.153]);
+    path0.cubicCurveTo(point + [427.266, 83.833], point + [427.906, 87.185], point + [429.191, 89.204]);
+    path0.cubicCurveTo(point + [430.754, 91.864], point + [433.688, 93.423], point + [438, 93.884]);
+    path0.lineTo(point + [438.551, 93.884]);
+    path0.lineTo(point + [439.379, 94.986]);
+    path0.lineTo(point + [438.691, 95.95]);
+    path0.lineTo(point + [408.82, 95.95]);
+    path0.lineTo(point + [408.273, 94.986]);
+    path0.lineTo(point + [408.82, 93.884]);
+    path0.cubicCurveTo(point + [412.492, 93.333], point + [414.969, 91.591], point + [416.254, 88.653]);
+    path0.cubicCurveTo(point + [417.078, 86.728], point + [417.492, 83.56], point + [417.492, 79.153]);
+    path0.lineTo(point + [417.492, 49.146]);
+    path0.cubicCurveTo(point + [417.492, 43.271], point + [415.797, 40.06], point + [412.402, 39.509]);
+    path0.lineTo(point + [409.922, 39.099]);
+    path0.lineTo(point + [409.371, 37.72]);
+    path0.lineTo(point + [409.785, 37.169]);
+    path0.lineTo(point + [425.48, 31.802]);
+    path0.lineTo(point + [426.852, 31.802]);
+    path0.lineTo(point + [426.852, 49.146]);
+    path0.cubicCurveTo(point + [432.727, 37.677], point + [439.289, 31.939], point + [446.539, 31.939]);
+    path0.lineTo(point + [453.145, 34.001]);
+    path0.lineTo(point + [449.289, 44.739]);
+    path0.lineTo(point + [445.578, 43.638]);
+    path0.cubicCurveTo(point + [444.473, 42.54], point + [443.371, 41.989], point + [442.27, 41.989]);
+    path0.cubicCurveTo(point + [441.168, 41.622], point + [440.113, 41.439], point + [439.105, 41.439]);
+    path0.cubicCurveTo(point + [435.984, 41.439], point + [433.551, 43.134], point + [431.809, 46.528]);
+    path0.cubicCurveTo(point + [429.516, 50.935], point + [428, 56.212], point + [427.266, 62.361]);
+    path0.closePath();
+    path0.moveTo(point + [427.266, 79.153]);
+    path0.fillColor = 'black';
+}
+draw_glyph_5();
+
+
+function draw_glyph_6(){
+    var point = new Point(0, 0);
+    var path0 = new Path();
+    path0.moveTo(point + [500.559, 75.302]);
+    path0.lineTo(point + [500.559, 63.466]);
+    path0.cubicCurveTo(point + [500.008, 63.739], point + [496.289, 64.747], point + [489.41, 66.489]);
+    path0.cubicCurveTo(point + [476.469, 67.591], point + [469.996, 72.505], point + [469.996, 81.22]);
+    path0.cubicCurveTo(point + [469.996, 84.982], point + [471.305, 88.009], point + [473.922, 90.306]);
+    path0.cubicCurveTo(point + [476.535, 92.599], point + [479.77, 93.743], point + [483.625, 93.743]);
+    path0.cubicCurveTo(point + [488.398, 93.743], point + [492.414, 91.888], point + [495.672, 88.169]);
+    path0.cubicCurveTo(point + [498.93, 84.454], point + [500.559, 80.165], point + [500.559, 75.302]);
+    path0.closePath();
+
+    var path1 = new Path();
+    path1.moveTo(point + [501.246, 85.486]);
+    path1.cubicCurveTo(point + [495.832, 93.747], point + [488.719, 97.88], point + [479.91, 97.88]);
+    path1.cubicCurveTo(point + [474.219, 97.88], point + [469.539, 96.685], point + [465.867, 94.298]);
+    path1.cubicCurveTo(point + [461.461, 91.454], point + [459.258, 87.368], point + [459.258, 82.044]);
+    path1.cubicCurveTo(point + [459.258, 71.673], point + [468.117, 65.618], point + [485.828, 63.876]);
+    path1.cubicCurveTo(point + [490.145, 63.415], point + [495.051, 62.271], point + [500.559, 60.435]);
+    path1.lineTo(point + [500.559, 52.728]);
+    path1.cubicCurveTo(point + [500.559, 41.345], point + [495.465, 35.653], point + [485.281, 35.653]);
+    path1.cubicCurveTo(point + [481.148, 35.653], point + [477.477, 36.708], point + [474.266, 38.821]);
+    path1.cubicCurveTo(point + [470.504, 41.208], point + [468.621, 44.372], point + [468.621, 48.321]);
+    path1.cubicCurveTo(point + [467.246, 47.677], point + [465.914, 47.036], point + [464.629, 46.392]);
+    path1.cubicCurveTo(point + [462.793, 45.474], point + [461.738, 44.56], point + [461.465, 43.638]);
+    path1.cubicCurveTo(point + [462.289, 40.888], point + [465.961, 38.181], point + [472.477, 35.521]);
+    path1.cubicCurveTo(point + [478.441, 33.134], point + [483.121, 31.939], point + [486.52, 31.939]);
+    path1.cubicCurveTo(point + [493.676, 31.939], point + [499.363, 33.548], point + [503.586, 36.759]);
+    path1.cubicCurveTo(point + [508.359, 40.333], point + [510.746, 45.564], point + [510.746, 52.45]);
+    path1.lineTo(point + [510.746, 80.943]);
+    path1.cubicCurveTo(point + [510.746, 88.564], point + [512.215, 92.372], point + [515.148, 92.372]);
+    path1.cubicCurveTo(point + [516.617, 92.372], point + [517.859, 91.958], point + [518.867, 91.13]);
+    path1.lineTo(point + [519.277, 92.509]);
+    path1.cubicCurveTo(point + [513.039, 95.353], point + [508.863, 96.775], point + [506.75, 96.775]);
+    path1.cubicCurveTo(point + [503.723, 96.775], point + [501.891, 93.15], point + [501.246, 85.9]);
+    path1.closePath();
+    path1.moveTo(point + [501.246, 85.486]);
+
+    var unsortedPathList = [path0, path1];
+    var sortedPathList = unsortedPathList.sort(sortOnBoundsSize);
+    var compoundPath = new CompoundPath(sortedPathList);
+    compoundPath.fillColor = 'black';
+    compoundPath.strokeColor = 'black';
+}
+draw_glyph_6();
+
+
+function draw_glyph_7(){
+    var point = new Point(0, 0);
+    var path0 = new Path();
+    path0.moveTo(point + [543.5, 89.341]);
+    path0.lineTo(point + [543.5, 108.751]);
+    path0.cubicCurveTo(point + [543.5, 113.157], point + [544.004, 116.368], point + [545.012, 118.388]);
+    path0.cubicCurveTo(point + [546.391, 121.232], point + [549.008, 122.931], point + [552.859, 123.478]);
+    path0.lineTo(point + [553.961, 124.583]);
+    path0.lineTo(point + [553.41, 125.548]);
+    path0.lineTo(point + [524.781, 125.548]);
+    path0.lineTo(point + [524.227, 124.583]);
+    path0.lineTo(point + [524.914, 123.478]);
+    path0.cubicCurveTo(point + [528.496, 122.931], point + [530.973, 121.189], point + [532.352, 118.247]);
+    path0.cubicCurveTo(point + [533.266, 116.232], point + [533.727, 113.064], point + [533.727, 108.751]);
+    path0.lineTo(point + [533.727, 49.833]);
+    path0.cubicCurveTo(point + [533.727, 43.958], point + [532.121, 40.747], point + [528.91, 40.2]);
+    path0.lineTo(point + [526.57, 39.782]);
+    path0.lineTo(point + [526.016, 38.411]);
+    path0.lineTo(point + [526.434, 37.861]);
+    path0.lineTo(point + [541.711, 32.489]);
+    path0.lineTo(point + [542.949, 32.489]);
+    path0.lineTo(point + [542.949, 46.943]);
+    path0.cubicCurveTo(point + [549.648, 36.943], point + [558.094, 31.939], point + [568.277, 31.939]);
+    path0.cubicCurveTo(point + [576.449, 31.939], point + [583.238, 35.036], point + [588.652, 41.232]);
+    path0.cubicCurveTo(point + [594.066, 47.423], point + [596.773, 54.65], point + [596.773, 62.911]);
+    path0.cubicCurveTo(point + [596.773, 72.271], point + [593.539, 80.325], point + [587.07, 87.071]);
+    path0.cubicCurveTo(point + [580.602, 93.818], point + [572.684, 97.189], point + [563.324, 97.189]);
+    path0.cubicCurveTo(point + [555.34, 97.189], point + [548.734, 94.575], point + [543.5, 89.341]);
+    path0.closePath();
+
+    var path1 = new Path();
+    path1.moveTo(point + [543.5, 73.786]);
+    path1.cubicCurveTo(point + [544.328, 79.478], point + [546.668, 84.157], point + [550.52, 87.829]);
+    path1.cubicCurveTo(point + [554.375, 91.497], point + [559.102, 93.333], point + [564.699, 93.333]);
+    path1.cubicCurveTo(point + [571.676, 93.333], point + [577.043, 90.443], point + [580.805, 84.661]);
+    path1.cubicCurveTo(point + [584.02, 79.798], point + [585.625, 73.696], point + [585.625, 66.353]);
+    path1.cubicCurveTo(point + [585.625, 58.462], point + [583.926, 51.853], point + [580.531, 46.528]);
+    path1.cubicCurveTo(point + [576.586, 40.29], point + [570.895, 37.169], point + [563.461, 37.169]);
+    path1.cubicCurveTo(point + [557.953, 37.169], point + [553.41, 39.142], point + [549.832, 43.091]);
+    path1.cubicCurveTo(point + [546.711, 46.486], point + [544.602, 51.071], point + [543.5, 56.857]);
+    path1.closePath();
+    path1.moveTo(point + [543.5, 73.786]);
+
+    var unsortedPathList = [path0, path1];
+    var sortedPathList = unsortedPathList.sort(sortOnBoundsSize);
+    var compoundPath = new CompoundPath(sortedPathList);
+    compoundPath.fillColor = 'black';
+    compoundPath.strokeColor = 'black';
+}
+draw_glyph_7();
+
+
+function draw_glyph_8(){
+    var point = new Point(0, 0);
+    var path0 = new Path();
+    path0.moveTo(point + [671.254, 79.153]);
+    path0.cubicCurveTo(point + [671.066, 88.06], point + [673.684, 92.966], point + [679.098, 93.884]);
+    path0.lineTo(point + [680.063, 94.986]);
+    path0.lineTo(point + [679.512, 95.95]);
+    path0.lineTo(point + [653.078, 95.95]);
+    path0.lineTo(point + [652.527, 94.986]);
+    path0.lineTo(point + [653.078, 93.884]);
+    path0.cubicCurveTo(point + [656.57, 93.333], point + [658.863, 91.544], point + [659.965, 88.513]);
+    path0.cubicCurveTo(point + [660.605, 86.771], point + [660.973, 83.653], point + [661.066, 79.153]);
+    path0.lineTo(point + [661.477, 56.989]);
+    path0.cubicCurveTo(point + [661.75, 43.224], point + [656.84, 36.341], point + [646.75, 36.341]);
+    path0.cubicCurveTo(point + [641.793, 36.341], point + [637.16, 38.153], point + [632.844, 41.782]);
+    path0.cubicCurveTo(point + [628.531, 45.407], point + [625.914, 49.696], point + [625, 54.65]);
+    path0.lineTo(point + [625, 79.153]);
+    path0.cubicCurveTo(point + [625, 83.193], point + [625.32, 86.224], point + [625.961, 88.243]);
+    path0.cubicCurveTo(point + [626.969, 91.454], point + [629.035, 93.333], point + [632.16, 93.884]);
+    path0.lineTo(point + [632.98, 94.986]);
+    path0.lineTo(point + [632.57, 95.95]);
+    path0.lineTo(point + [607.375, 95.95]);
+    path0.lineTo(point + [606.828, 94.986]);
+    path0.lineTo(point + [607.375, 93.884]);
+    path0.cubicCurveTo(point + [610.867, 93.333], point + [613.16, 91.544], point + [614.262, 88.513]);
+    path0.cubicCurveTo(point + [614.902, 86.681], point + [615.223, 83.56], point + [615.223, 79.153]);
+    path0.lineTo(point + [615.223, 16.794]);
+    path0.cubicCurveTo(point + [615.223, 13.767], point + [615.039, 11.704], point + [614.676, 10.603]);
+    path0.cubicCurveTo(point + [614.031, 8.673], point + [612.563, 7.525], point + [610.266, 7.157]);
+    path0.lineTo(point + [607.793, 6.747]);
+    path0.lineTo(point + [607.242, 5.368]);
+    path0.lineTo(point + [607.652, 4.818]);
+    path0.lineTo(point + [623.762, 0.001]);
+    path0.lineTo(point + [625, 0.001]);
+    path0.lineTo(point + [625, 45.982]);
+    path0.cubicCurveTo(point + [627.934, 41.849], point + [631.672, 38.478], point + [636.215, 35.861]);
+    path0.cubicCurveTo(point + [640.758, 33.247], point + [645.461, 31.939], point + [650.328, 31.939]);
+    path0.cubicCurveTo(point + [657.301, 31.939], point + [662.625, 34.075], point + [666.297, 38.341]);
+    path0.cubicCurveTo(point + [669.969, 42.607], point + [671.758, 48.275], point + [671.664, 55.341]);
+    path0.closePath();
+    path0.moveTo(point + [671.254, 79.153]);
+    path0.fillColor = 'black';
+}
+draw_glyph_8();
+
+
+function draw_glyph_9(){
+    var point = new Point(0, 0);
+    var path0 = new Path();
+    path0.moveTo(point + [735.805, 35.931]);
+    path0.lineTo(point + [734.84, 34.693]);
+    path0.lineTo(point + [735.395, 33.314]);
+    path0.lineTo(point + [745.578, 33.728]);
+    path0.lineTo(point + [755.902, 33.314]);
+    path0.lineTo(point + [756.73, 34.552]);
+    path0.lineTo(point + [756.18, 35.653]);
+    path0.cubicCurveTo(point + [751.496, 37.583], point + [747.32, 42.677], point + [743.652, 50.939]);
+    path0.lineTo(point + [717.91, 109.439]);
+    path0.cubicCurveTo(point + [713.137, 120.271], point + [706.438, 125.685], point + [697.813, 125.685]);
+    path0.cubicCurveTo(point + [695.977, 125.685], point + [694.691, 124.814], point + [693.953, 123.068]);
+    path0.cubicCurveTo(point + [694.508, 120.13], point + [696.02, 117.329], point + [698.5, 114.669]);
+    path0.lineTo(point + [700.426, 115.771]);
+    path0.cubicCurveTo(point + [701.066, 116.138], point + [701.852, 116.321], point + [702.77, 116.321]);
+    path0.cubicCurveTo(point + [706.438, 115.954], point + [709.512, 114.212], point + [711.988, 111.091]);
+    path0.cubicCurveTo(point + [714.469, 107.97], point + [715.707, 104.528], point + [715.707, 100.771]);
+    path0.lineTo(point + [717.633, 92.372]);
+    path0.lineTo(point + [696.57, 48.868]);
+    path0.cubicCurveTo(point + [694.828, 45.196], point + [693.359, 42.583], point + [692.164, 41.021]);
+    path0.cubicCurveTo(point + [690.238, 38.361], point + [687.852, 36.665], point + [685.008, 35.931]);
+    path0.lineTo(point + [684.043, 34.693]);
+    path0.lineTo(point + [684.594, 33.314]);
+    path0.lineTo(point + [696.984, 33.728]);
+    path0.lineTo(point + [709.238, 33.314]);
+    path0.lineTo(point + [710.063, 34.552]);
+    path0.lineTo(point + [709.512, 35.653]);
+    path0.cubicCurveTo(point + [706.117, 36.392], point + [704.234, 37.583], point + [703.867, 39.232]);
+    path0.lineTo(point + [703.867, 39.923]);
+    path0.cubicCurveTo(point + [703.867, 41.849], point + [704.648, 44.372], point + [706.207, 47.493]);
+    path0.lineTo(point + [724.656, 84.525]);
+    path0.lineTo(point + [739.934, 50.798]);
+    path0.cubicCurveTo(point + [741.496, 47.31], point + [742.273, 44.419], point + [742.273, 42.122]);
+    path0.cubicCurveTo(point + [742.273, 41.298], point + [742.137, 40.611], point + [741.863, 40.06]);
+    path0.cubicCurveTo(point + [741.125, 38.04], point + [739.105, 36.665], point + [735.805, 35.931]);
+    path0.closePath();
+    path0.moveTo(point + [735.805, 35.931]);
+    path0.fillColor = 'black';
+}
+draw_glyph_9();
+
+
+	</script>
+</head>
+<body>
+	<canvas id="canvas" width="1200" height="900"></canvas>
+
+</body>
+</html>

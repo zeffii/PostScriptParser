@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Apt Progress</title>
+	<link rel="stylesheet" href="../css/style2.css">
+	<script type="text/javascript" src="../../lib/paper.js"></script>
+	<script type="text/paperscript" canvas="canvas">
+			
+	/*
+	visual work progress report
+	written by Dealga McArdle 2011, November.
+	MIT license
+	
+	07 Nov, Modularized Code
+	08 Nov, Scrollability 
+	09 Nov, Layers, sorting Array
+	10 Nov, Gradient test.
+	11 Nov, Sorting item list by completion percentage. (perhaps factor?..)
+	11 Nov, Removed references to new Array, apparently this is better. Organizing constants
+	*/
+	
+	// Global variables
+	var layer2 = new Layer(); // background layer
+	var layer1 = new Layer(); // top layer
+	
+	// miscellaneous draw constants	
+	var spacerHeight = 100;	// between area instances
+	var alignToProgressbar = new Point(20,0);	
+	var verticalDistance = new Point(0,21);
+	var progressBarSize = new Size(400,12);	
+	var gradientProgressBar = new Gradient(['#1f9edd','#1f9edd','#1776a5']);
+	
+	var cornerSize = new Size(7,7);	// radius of outer border rounding.
+	var gradientAreaBorder = new Gradient(['#f5f5f5','#f2f2f2']);
+	var bufferHeight = 7;		// for outer border.
+	
+	
+	// Protein. 
+	
+	function draw_item(location, name, percentage){
+		
+		/* 
+		helper function for item specific percentage representation
+		*/
+		
+		// area name stuff
+		var itemNameText = new PointText(location);
+		itemNameText.justification = 'right';
+		itemNameText.fillColor = '#222222';
+		itemNameText.content = name;
+		
+		// draw rects for readout
+		var progressBarLocation = new Point(location.x + 20, location.y - 12);
+		var rectangle = new Rectangle(progressBarLocation, progressBarSize);
+		var path = new Path.Rectangle(rectangle);
+		path.strokeColor = '#1f9edd';
+		path.strokeColor.alpha = .2;
+		path.fillColor = "#FFFFFF";
+		
+		var progressBarReadoutLocation = new Point(location.x + 21, location.y - 11);
+		var progressBarReadout = new Size(percentage*4, 10);
+		var innerRectangle = new Rectangle(progressBarReadoutLocation, progressBarReadout);
+		var pathInner = new Path.Rectangle(innerRectangle);
+		pathInner.strokeColor = '#1f9edd';
+		
+		// gradient setup
+		var topLeft = progressBarReadoutLocation;
+		var bottomLeft = topLeft + [0,10];
+		pathInner.fillColor = new GradientColor(gradientProgressBar, topLeft, bottomLeft);
+		
+	}
+
+
+	function draw_description(multilineText, descriptionLocation){
+		
+		/*
+		only reaches this point if multilineText was not null.
+		This function draws the discription and returns the height
+		of the area it produces as an integer.
+		
+		input:	multilineText, and initial location for first line of description text.
+		output:	height of generated text
+		*/
+		
+		for (i=0; i < multilineText.length; i++){
+			var descriptionText = new PointText(descriptionLocation);
+			descriptionText.content = multilineText[i];
+			descriptionText.characterStyle = {
+				fillColor: 'black',
+				fontSize: 9
+			};
+			descriptionLocation = descriptionLocation + verticalDistance;
+			
+		}
+		return 21 * multilineText.length;
+		
+	}
+	
+	
+	function draw_area_name(areaName, areaNameLocation){
+	
+		/*
+		takes a string and a location x.y and draws them.
+		*/
+		
+		var areaNameText = new PointText(areaNameLocation);
+		areaNameText.justification = 'left';
+		areaNameText.content = areaName;
+		areaNameText.characterStyle = {
+			fillColor: 'black',
+			fontSize: 16
+		};
+	
+	}
+		
+	
+	function draw_border(point, descriptionHeight, itemList){
+		
+		/*
+		Takes into account the location of the rectangle,
+		adjusts final rectangle size with the values found in descriptionHeight and the
+		length of the itemList
+		
+		return: rectangle dimensions ( to be used for placing the point for subsequent rectangles areas
+		*/
+				
+		// outer border setup, take into account item list and description length
+		var ySize = itemList.length * 21;	//assumes itemList is not empty.
+		var rectangleDimensions = new Size(530, ySize + descriptionHeight + bufferHeight);
+		
+		// outer border drawing
+		var rectangle = new Rectangle(point, rectangleDimensions);
+		var path = new Path.RoundRectangle(rectangle, cornerSize);
+		path.strokeColor = '#DDDDDD';
+		path.strokeWidth = 1;
+	
+		var topLeft = point;
+		var bottomLeft = point + [0,rectangleDimensions.height]; 		
+		path.fillColor = new GradientColor(gradientAreaBorder, topLeft, bottomLeft);
+		
+		return rectangleDimensions;
+		
+	}
+	
+	
+	function draw_area(areaInstance, point){
+	
+		/*
+		input:	areaInstance, contains all data for this area
+		output:	draw areaName, items + percentages, description (if present.)
+		return:	location.y for a next areaInstance.	
+		*/
+		
+		// set active layer
+		layer1.activate();	
+		
+		// disect the area instance, and sort itemList
+		var areaName = areaInstance[0];
+		var itemList = areaInstance[1].sort(sortOnCompletedPercentage);
+		var multilineText = areaInstance[2];
+	
+		// draw area name
+		var areaNameLocation = new Point(point.x, point.y-10);
+		draw_area_name(areaName, areaNameLocation);
+				
+		// draw items and percentages
+		var itemLocation = new Point(point.x+100, point.y+20);
+		for (i=0; i < itemList.length; i++){
+			draw_item(itemLocation, itemList[i][0], itemList[i][1]);
+			itemLocation = itemLocation + verticalDistance;
+		}
+				
+		// if multilineText is present and use last area item location to determin its location.
+		var descriptionHeight = 0;
+		if (multilineText != null){
+			var descriptionLocation = itemLocation + alignToProgressbar;
+			descriptionHeight = draw_description(multilineText, descriptionLocation);
+		}
+		
+		// draw border and return its height for the next areaInstance (if there is one.)
+		// use this to space out consecutive Areas.
+		layer2.activate();
+		var rectangleDimensions = draw_border(point, descriptionHeight, itemList);
+		return 40 + rectangleDimensions.height;
+		
+	}
+	
+	
+	// i haven't given much thought to this part so it's not very pretty. but it's fast.
+	// TODO replace with text parsing version instead. 
+	
+	// Living Room
+	var itemList = [["Walls", 100], ["Coving", 95], ["Ceiling", 100], ["Carpet", 95], ["Dents", 100] ];
+	var multilineText = null;
+	var areaInstance = ["Living Room", itemList, multilineText];
+	
+	// Kitchen
+	var itemList2 = [["Walls", 100], ["Ceiling", 100], ["Floor", 95], ["Dents", 100], ["Fridge", 100], ["Clothes Washer", 100], ["Cabinets", 80], ["Oven", 0] ];
+	var multilineText2 = ["- Microwave : Done", "- Doorstop / Area behind door needs fixing"];
+	var areaInstance2 = ["Kitchen", itemList2, multilineText2];
+	
+	// Main Bedroom
+	var itemList3 = [["Damp Patch", 0], ["Ceiling", 80], ["Floor", 95], ["Dents", 100], ["Walls", 100],["Ensuite Door", 80]];
+	var multilineText3 = ["- Damp Spot needs treatment", "- Condensation around window seems ok", "- Vent checked, it's open", "- Weird mould on the skirting board"];
+	var areaInstance3 = ["Master Bedroom", itemList3, multilineText3];
+	
+	// Ensuite
+	var itemList4 = [["Walls", 50], ["Ceiling", 40], ["Floor", 75], ["Dents", 80], ["Mold", 85], ["Cabinet", 80], ["Shower", 30]];
+	var multilineText4 = ["- Walls need water resistant paint", "- No ventilation for condensation yet. need stairs/cord."];
+	var areaInstance4 = ["Ensuite", itemList4, multilineText4];
+	
+	// Bathroom
+	var itemList5 = [["Tiles", 100], ["Ceiling", 60], ["Floor", 95], ["Dents", 100], ["Bath", 80], ["Walls", 100] ];
+	var multilineText5 = ["- Walls need water resistant paint", "- No ventilation for condensation yet. need stairs/cord.", 
+	"- Door needs paint, lock", "- Cistern fills very slow",  "- Need to replace wood under sink", "- Bath and Basin need filler"];
+	var areaInstance5 = ["Bathroom", itemList5, multilineText5];
+	
+	// Small Bedroom
+	var itemList6 = [["Walls", 100], ["Ceiling", 100], ["Floor", 100], ["Dents", 100], ["Wardrobe", 80]];
+	var multilineText6 = ["- Wardrobe should be screwed together again", "- Windows are missing second lock", "- Door handle is bent, should add a doorstop too"];
+	var areaInstance6 = ["Small Bedroom", itemList6, multilineText6];
+	
+	// Hallway
+	var itemList7 = [["Walls", 100], ["Ceiling", 100], ["Carpet", 100], ["Dents", 100]];
+	var multilineText7 = ["- Front door hangings look like a forced entry has taken place."];
+	var areaInstance7 = ["Hallway", itemList7, multilineText7];
+	
+	// Area arrays compiled into one Array
+	var areaList = [areaInstance, areaInstance2, areaInstance3, areaInstance4, areaInstance5, areaInstance6, areaInstance7];
+
+	
+	// custom sorting, average percentages
+	
+	function get_average(areaInstance){
+	
+		/*
+		Each areaInstance contains an itemList. Every itemList has a list of percentages, 
+		i would like to know what the sum of percentages divided by the number of items 
+		in that itemList is, this gives an indication of the percentage completed for that specific area.
+		
+		input:	areaInstance
+		return:	average percentage in itemList
+		*/
+				
+		var itemList = areaInstance[1];
+		var arrayLength = itemList.length;
+		
+		var percents = 0;
+		for (i=0; i < arrayLength; i++){
+			percents += itemList[i][1];
+		}
+		
+		return percents / arrayLength;
+			
+	}
+			
+	function sortOnAverage(x, y){
+		
+		/*
+		explanation:	(to self) it's a bit vague, x and y seem to be consecutive elements of the array to be sorted.
+		input:			a raw array
+		output:			an array, but sorted by the averaged percentage of itemList in each areaInstance, 
+							in descending order.
+		*/
+
+		x = get_average(x);
+		y = get_average(y);
+		
+		if (x < y)
+			return 1;
+		else if (x== y)
+			return 0;
+		else 
+			return -1;
+			
+	}
+
+
+	// custom sorting, descending order or alphabetic ( itemList)
+	
+	function alphabeticCheck(a, b){
+	
+		/*
+		set to lower case, and sort alphabetically
+		*/
+
+		if (a.toLocaleLowerCase() < b.toLocaleLowerCase())
+			return -1;
+		else
+			return 1;
+		
+	}
+
+	function sortOnCompletedPercentage(x, y){
+	
+		/*
+		input:	takes the unordered itemList
+		output:	returns an Array, percentage completed in descending order
+
+		*/
+
+		var a = x[0]
+		var b = y[0]	
+		x = x[1];
+		y = y[1];
+		
+		if (x < y)
+			return 1;
+		else if (x==y)
+			return alphabeticCheck(a, b);
+		else
+			return -1;
+				
+	}
+	
+	
+	
+	areaList = areaList.sort(sortOnAverage);
+		
+										
+	// Main.										
+	var areaIndex = 0	
+	for (areaIndex; areaIndex < areaList.length; areaIndex++){
+		var current_yposition = draw_area(areaList[areaIndex], new Point(100, spacerHeight));
+		spacerHeight += current_yposition;
+	}
+
+	
+	</script>
+</head>
+<body>
+	<canvas id="canvas" width="700" height="1900"></canvas>
+
+</body>
+</html>
+
+
+
+

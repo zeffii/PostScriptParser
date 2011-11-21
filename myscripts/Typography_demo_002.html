@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Letter outlines</title>
+	<link rel="stylesheet" href="../css/style2.css">
+	<script type="text/javascript" src="../../lib/paper.js"></script>
+	<script type="text/paperscript" canvas="canvas">
+			
+	/*
+	visual work progress report
+	written by Dealga McArdle 2011, November.
+	MIT license
+	
+	14 Nov, start.
+	*/
+	
+	// Global variables
+	var layer2 = new Layer(); // background layer
+	var layer1 = new Layer(); // top layer
+	
+	
+	function draw_typography(point){
+	
+		layer1.activate();
+		var path_001 = new Path();
+		path_001.add(new Point(30,75));
+		var point2 = new Point(100,20);
+		var handleIn = new Point(-50,0);
+		var handleOut = new Point(50,0);
+		path_001.add(new Segment(point2, handleIn, handleOut));
+		path_001.add(new Point(170, 75));
+		path_001.strokeColor = 'black';
+		path_001.selected = true;
+		// path_001.closed = true;
+		// path_001.fillColor = 'black';
+	
+	}
+	
+	
+	function main(){
+		var point = new Point(50,50);
+		draw_typography(point);
+		
+	}
+	
+	
+	
+	main();
+	
+	</script>
+</head>
+<body>
+	<canvas id="canvas" width="700" height="1900"></canvas>
+
+</body>
+</html>
+
+
+
+

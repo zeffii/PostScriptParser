@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Generative Abstraction</title>
+	<link rel="stylesheet" href="../css/style2.css">
+	<script type="text/javascript" src="../../lib/paper.js"></script>
+	<script type="text/paperscript" canvas="canvas_gen">
+			
+	/*
+	regen of triangles.
+	this one is for you.
+	written by Dealga McArdle 2011, November.
+	MIT license
+	
+	12 Nov, exploration of paper.js
+	13 Nov, bug tracking. (rasterize didn't like negative coordinates)
+	
+	Milestsones.
+	[x] place n triangles within a circular boundary.
+	[x] random size 
+	[x] random gradient 
+	[x] random rotation
+	[x] include refresh button
+	[x] include add more
+	[x] include reverse content
+	[ ] add ability to save hires image.
+	
+	*/
+	
+	// Layer inits
+	var layerMain = new Layer();
+	var layerTop = new Layer();
+	
+	var pathRefreshButton = new Path();
+	var pathReverseButton = new Path();
+	var pathAddButton = new Path();
+	
+	var cornerSize = new Size(3,3);
+	var colorScheme;
+	
+	
+	
+	function random_between(lowValue, highValue){
+    
+		var valueSpread = highValue - lowValue;
+		var result = lowValue + (valueSpread * Math.random());
+		result = Math.round(result);
+	   
+		if (result < lowValue)
+			return lowValue;
+		else if (result > highValue)
+			return highValue;
+		else
+			return result;
+		
+		}
+
+		
+	function random_float_between(lowValue, highValue){
+		
+		var valueSpread = highValue - lowValue;
+		var result = lowValue + (valueSpread * Math.random());
+	   
+		if (result < lowValue)
+			return lowValue;
+		else if (result > highValue)
+			return highValue;
+		else
+			return result;
+		
+		}
+
+		
+		
+	function get_random_gradient(){
+		
+		/*
+		// this is the weakest function, it should include bitshifting and maybe hue as colour.
+		[TODO] add more control and randomness.
+		*/	
+			
+		var reds = [];
+		var greens = [];
+		var blues = [];
+						
+		if (colorScheme == 0){
+			reds = ['FA', 'FB', 'FC', 'FD', 'FE', 'FF'];
+			greens = ['00', '10', '34', '2A', 'A0', 'A0'];
+			blues = ['00', '10', '04', '2A', '40','6A'];
+			var r1 = reds[random_between(0, reds.length)];
+			var g1 = '00';
+			var b1 = '00';
+			var r2 = reds[random_between(0, reds.length)];
+			var g2 = greens[random_between(0, greens.length)];
+			var b2 = blues[random_between(0, blues.length)];
+		}
+		
+		if (colorScheme == 1){
+			reds = ['04', '1A', '2A', '31', '1C', '2F'];
+			greens = ['04', '10', '24', 'AA', '30', 'A5'];
+			blues = ['FA', 'FB', 'FC', 'FD', 'FE', 'FA', 'E3', 'FF'];
+			var r1 = reds[random_between(0, reds.length)];
+			var g1 = greens[random_between(0, greens.length)];
+			var b1 = blues[random_between(0, blues.length)];;
+			var r2 = reds[random_between(0, reds.length)];
+			var g2 = greens[random_between(0, greens.length)];
+			var b2 = blues[random_between(0, blues.length)];
+				
+		}
+		
+		if (colorScheme == 2){
+			var r3 = random_float_between(0.2,0.7);
+			var g3 = random_float_between(0.5,1);
+			var b3 = random_float_between(0.5,0.9);
+			var r4 = random_float_between(0.7,1);
+			var g4 = random_float_between(0,0.7);
+			var b4 = random_float_between(0,0.2);
+			var grad1 = new RgbColor(r3, g3, b3);
+			var grad2 = new RgbColor(r4, g4, b4);
+			return [grad1, grad2];
+		}
+		
+		
+		var rgb1 = '#' + r1 + g1 + b1;
+		var rgb2 = '#' + r2 + g2 + b2;
+		return [rgb1, rgb2];
+	
+	}
+	
+	
+	function get16ths(){
+		// this function returns an array with an iteration of 22.5 from 0 to 360
+		var myArray = new Array();
+		var degrees = 0;
+		while (degrees < 360){
+			myArray.push(degrees);
+			degrees += 45/2;
+				
+		}
+		return myArray;
+	}
+	
+	
+	
+	
+	function draw_triangle(point){
+	
+		/*
+		Unrefined code.
+		point [is center]. let's build a triangle around it.
+		*/
+		
+		var segments = [new Point(50, 75), new Point(100, 25),new Point(150, 75)]; 
+		var myPath = new Path(segments);
+		myPath.strokeColor = 'black';
+		myPath.strokeColor.alpha = 0;
+		myPath.closed = true;
+		
+		var topLeft = new Point(50, 25);
+		var bottomLeft = new Point(50, 75);
+				
+		var myGradient = new Gradient(get_random_gradient());
+		myPath.fillColor = new GradientColor(myGradient, topLeft, bottomLeft);
+		
+		var rotateDegrees = get16ths();
+		var rotationalAmount = rotateDegrees[random_between(0, rotateDegrees.length)];
+		myPath.rotate(rotationalAmount);
+				
+		myPath.position = point;
+		myPath.scale(Math.random()*Math.random()*5);
+		myPath.opacity = Math.random();
+		
+	}
+
+	
+	
+	function draw_button(point, stringText, rectdim, rect){
+	
+		var path = new Path.RoundRectangle(rect, cornerSize);
+		path.fillColor = '777777';
+		path.strokeColor = '#DDDDDD';
+		path.strokeWidth = 0.76;
+		
+		var text = new PointText(point);
+		text.content = stringText;
+		text.characterStyle = {
+			fillColor:'#EEEEEE',
+			fontSize: 9
+		};
+	
+		return path;
+		
+	}
+	
+	
+	function draw_buttons(){
+	
+		// this would be prettier if PointText included a method to determine px width of content
+		layerTop.activate();
+		var point = new Point(300, 670);
+				
+		// Refresh Button
+		var buttonRefreshText = "hit refresh";
+		var rectDim = new Size(76, 14);
+		var rectangle = new Rectangle(point-[11,11], rectDim);
+		pathRefreshButton = draw_button(point, buttonRefreshText, rectDim, rectangle);
+	
+		// Reverse Button
+		var buttonReverseText = "reverse items";
+		point += [80, 0];
+		var rect2Dim = new Size(88, 14);
+		var rectangle2 = new Rectangle(point-[7,11], rect2Dim);
+		pathReverseButton = draw_button(point, buttonReverseText, rect2Dim, rectangle2); 
+		
+		// Add Button
+		var buttonAddText = "add items";
+		point -= [162, 0];
+		var rect3Dim = new Size(69, 14);
+		var rectangle3 = new Rectangle(point-[7,11], rect3Dim);
+		pathAddButton = draw_button(point, buttonAddText, rect3Dim, rectangle3); 
+		
+		layerMain.activate();
+		
+		
+	}
+	
+	
+	// mouse interaction:
+	
+	function onMouseDown(event) {
+	
+		if (pathRefreshButton.hitTest(event.point) != null){
+			layerMain.removeChildren();
+			main();
+		}
+		
+		if (pathReverseButton.hitTest(event.point) != null){
+			layerMain.reverseChildren();
+		}
+		
+		if (pathAddButton.hitTest(event.point) != null){
+			main();
+		}
+				
+	}
+	
+	
+	
+	function main(){
+		
+		colorScheme = random_between(0,2);
+		
+		layerMain.activate();
+		var numTris = 20; 
+		for (i=0; i < numTris; i++){
+			var pointOnCircle = 2.0 * 3.141592 * Math.random();
+			var tRadius = random_between(0,200);
+			var posX = Math.sin(pointOnCircle) * tRadius;
+			var posY = Math.cos(pointOnCircle) * tRadius;
+			posX += 300;
+			posY += 300;
+			
+			var point = new Point(posX, posY);
+			draw_triangle(point);
+		
+		}
+				
+		draw_buttons();
+		
+	}
+	
+	main();
+	
+	
+	</script>
+</head>
+<body>
+	<canvas id="canvas_gen" width="700" height="700"></canvas>
+
+</body>
+</html>
+
+
+
+

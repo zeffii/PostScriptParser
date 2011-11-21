@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Letter outlines</title>
+	<link rel="stylesheet" href="../css/style2.css">
+	<script type="text/javascript" src="../../lib/paper.js"></script>
+	<script type="text/paperscript" canvas="canvas">
+			
+	/*
+	visual work progress report
+	written by Dealga McArdle 2011, November.
+	MIT license
+	
+	14 Nov, start.
+	*/
+	
+	// Global variables
+	var layer2 = new Layer(); // background layer
+	var layer1 = new Layer(); // top layer
+	
+	
+	
+	function draw_t_cap(point){
+	
+		var path = new Path();
+	
+		// roof
+		path.add(point);
+		path.add(point + [200, 0]);  
+		path.add(point + [205, 31]);   
+		path.add(point + [200, 31]);
+		
+		path.cubicCurveTo(point + [175,10], point + [135, 6], point + [113, 10]);
+		path.add(point +[113,170]);
+
+		// base
+		path.cubicCurveTo(point + [113,193], point + [125,193], point + [148, 193]);
+		path.add(point + [150, 199]); 
+		path.add(point + [50, 199]);
+		path.add(point + [52, 193]);
+		path.cubicCurveTo(point + [75,193], point + [87,193], point + [87, 170]);
+		path.add(point + [87, 10]);
+		
+		// left under t junction
+		path.cubicCurveTo(point + [65, 6], point + [25, 10], point + [0,31]);
+		path.add(point + [-5, 31]);
+				
+		// path settings
+		path.closed = true;
+		path.fillColor = 'black';
+		path.strokeColor = 'black';
+	
+		// return path;	
+	}
+	
+		
+	function draw_y_lower(point){
+	
+		var path = new Path();
+		path.add(point + [0, 50]);
+		path.add(point + [51, 50]);
+		
+		path.add(point + [49, 56]);
+		path.cubicCurveTo(point + [42, 57], point + [35, 58], point + [39, 66]);
+		
+		path.add(point + [96, 174]);
+		path.add(point + [135, 66 ]); // up before the curve
+		path.cubicCurveTo(point + [139, 58], point + [118, 57], point + [125, 56]);
+		path.add(point + [123, 50]);
+		path.add(point + [174, 50]);
+		
+		path.add(point + [176, 56]);
+		path.add(point + [140, 80]); // should be cubicCurveTo.
+		
+		path.add(point + [89, 221]);
+		// path.cubicCurveTo(
+		
+		
+		// path settings
+		// path.closed = true;
+		// path.fillColor = 'black';
+		path.strokeColor = 'black';
+		
+			
+	
+	
+	
+	
+	
+	
+	}
+	
+	
+	
+	function draw_typography(point){
+	
+		// center line is x:150 , all points are relative to 0,0
+	
+		layer1.activate();
+		draw_t_cap(point);
+		draw_y_lower(point+[200,0]);
+		}
+	
+	
+	function main(){
+		var point = new Point(50,50);
+		draw_typography(point);
+		
+	}
+	
+	
+	
+	main();
+	
+	</script>
+</head>
+<body>
+	<canvas id="canvas" width="700" height="1900"></canvas>
+
+</body>
+</html>
+
+
+
+
