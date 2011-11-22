@@ -66,7 +66,7 @@ def get_postscript(filename):
     
     filedata.close()
 
-    # at this point usableFileString contains all parsable files, minus newline.
+    # at this point usableFileString contains all parsable lines, minus newline.
     # let's return usableFileString without trailing whitespace    
     return usableFileString.rstrip()
 
