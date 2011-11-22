@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>drawing charly</title>
+	<link rel="stylesheet" href="css/style2.css">
+	<script type="text/javascript" src="lib/paper.js"></script>
+	<script type="text/paperscript" canvas="canvas">
+
+function sortOnBoundsSize(p1, p2){
+
+    var x = (p1.bounds.width * p1.bounds.height);
+    var y = (p2.bounds.width * p2.bounds.height);
+
+    if (x < y)
+            return 1;
+    else if (x==y)
+            return 0;
+    else
+            return -1;
+
+}
+
+
+
+function remove_empty_paths(unsortedPathList){
+
+    var validUnsortedPathList = [];
+    for (var i = 0; i < unsortedPathList.length; i += 1){
+        if (unsortedPathList[i].segments != 0){
+            validUnsortedPathList.push(unsortedPathList[i]);
+        }
+        else{
+            console.log("removed path");
+        }
+    }
+    return validUnsortedPathList;
+
+}
+
+
+function draw_glyph_0(){
+    var point = new Point(0, 1015);
+    var path0 = new Path();
+    path0.moveTo(point + [311.332, -0.698]);
+    path0.cubicCurveTo(point + [307.508, -1.038], point + [303.551, -1.562], point + [302.531, -1.862]);
+    path0.cubicCurveTo(point + [299.656, -2.71], point + [290.152, -7.636], point + [282.984, -11.995]);
+    path0.cubicCurveTo(point + [271.461, -19.003], point + [267.703, -19.89], point + [246.367, -20.64]);
+    path0.cubicCurveTo(point + [230.168, -21.21], point + [226.891, -21.554], point + [219.879, -23.417]);
+    path0.cubicCurveTo(point + [208.098, -26.554], point + [206.172, -28.273], point + [206.984, -34.941]);
+    path0.cubicCurveTo(point + [207.23, -36.984], point + [207.477, -39.015], point + [207.527, -39.456]);
+    path0.cubicCurveTo(point + [207.582, -39.898], point + [207.0, -42.237], point + [206.238, -44.655]);
+    path0.cubicCurveTo(point + [203.973, -51.87], point + [204.379, -55.023], point + [209.387, -69.058]);
+    path0.cubicCurveTo(point + [213.625, -80.929], point + [215.992, -88.339], point + [216.801, -92.257]);
+    path0.cubicCurveTo(point + [216.984, -93.136], point + [216.492, -94.804], point + [215.707, -95.96]);
+    path0.cubicCurveTo(point + [214.922, -97.12], point + [212.949, -100.066], point + [211.32, -102.511]);
+    path0.cubicCurveTo(point + [207.418, -108.378], point + [204.789, -109.855], point + [202.434, -107.499]);
+    path0.cubicCurveTo(point + [201.422, -106.487], point + [201.465, -105.304], point + [202.766, -98.187]);
+    path0.cubicCurveTo(point + [204.023, -91.331], point + [204.117, -89.132], point + [203.379, -84.359]);
+    path0.cubicCurveTo(point + [202.488, -78.624], point + [198.469, -66.515], point + [193.879, -55.734]);
+    path0.cubicCurveTo(point + [191.453, -50.034], point + [191.406, -49.702], point + [192.332, -44.776]);
+    path0.cubicCurveTo(point + [193.488, -38.636], point + [192.801, -30.558], point + [190.945, -28.511]);
+    path0.cubicCurveTo(point + [188.156, -25.429], point + [182.375, -24.491], point + [161.879, -23.808]);
+    path0.cubicCurveTo(point + [143.277, -23.191], point + [128.367, -21.714], point + [123.078, -19.972]);
+    path0.cubicCurveTo(point + [115.992, -17.636], point + [110.496, -15.46], point + [105.48, -13.007]);
+    path0.cubicCurveTo(point + [98.555, -9.616], point + [91.504, -8.593], point + [75.078, -8.585]);
+    path0.cubicCurveTo(point + [62.438, -8.577], point + [59.926, -9.026], point + [46.059, -13.8]);
+    path0.cubicCurveTo(point + [34.961, -17.616], point + [24.277, -24.698], point + [24.277, -28.241]);
+    path0.cubicCurveTo(point + [24.277, -30.218], point + [27.773, -38.648], point + [28.875, -39.331]);
+    path0.cubicCurveTo(point + [29.902, -39.964], point + [31.258, -38.851], point + [31.59, -37.105]);
+    path0.cubicCurveTo(point + [31.758, -36.214], point + [33.512, -34.71], point + [35.695, -33.589]);
+    path0.cubicCurveTo(point + [38.121, -32.339], point + [39.676, -30.944], point + [39.977, -29.757]);
+    path0.cubicCurveTo(point + [40.445, -27.878], point + [44.125, -26.273], point + [47.98, -26.261]);
+    path0.cubicCurveTo(point + [48.918, -26.261], point + [50.078, -25.776], point + [50.566, -25.194]);
+    path0.cubicCurveTo(point + [51.848, -23.648], point + [59.48, -23.585], point + [59.48, -25.12]);
+    path0.cubicCurveTo(point + [59.48, -26.409], point + [57.547, -27.331], point + [52.68, -28.374]);
+    path0.cubicCurveTo(point + [49.824, -28.984], point + [49.453, -29.335], point + [49.227, -31.655]);
+    path0.cubicCurveTo(point + [49.008, -33.925], point + [48.449, -34.499], point + [44.828, -36.159]);
+    path0.cubicCurveTo(point + [40.469, -38.163], point + [37.215, -41.058], point + [38.211, -42.054]);
+    path0.cubicCurveTo(point + [38.535, -42.378], point + [41.563, -42.659], point + [44.938, -42.679]);
+    path0.cubicCurveTo(point + [50.852, -42.71], point + [57.246, -43.944], point + [68.277, -47.179]);
+    path0.cubicCurveTo(point + [71.141, -48.019], point + [76.18, -48.921], point + [79.48, -49.187]);
+    path0.cubicCurveTo(point + [89.574, -49.995], point + [96.336, -52.046], point + [101.305, -55.796]);
+    path0.cubicCurveTo(point + [106.102, -59.417], point + [106.156, -59.538], point + [107.469, -69.265]);
+    path0.cubicCurveTo(point + [107.957, -72.898], point + [109.059, -79.554], point + [109.918, -84.062]);
+    path0.cubicCurveTo(point + [110.777, -88.566], point + [111.48, -94.054], point + [111.484, -96.257]);
+    path0.cubicCurveTo(point + [111.488, -101.093], point + [112.781, -106.144], point + [114.512, -108.089]);
+    path0.cubicCurveTo(point + [115.211, -108.874], point + [118.773, -111.355], point + [122.43, -113.597]);
+    path0.cubicCurveTo(point + [126.086, -115.839], point + [129.078, -118.21], point + [129.078, -118.866]);
+    path0.cubicCurveTo(point + [129.078, -119.523], point + [126.75, -122.53], point + [123.906, -125.546]);
+    path0.cubicCurveTo(point + [121.063, -128.562], point + [118.102, -132.023], point + [117.332, -133.241]);
+    path0.cubicCurveTo(point + [116.559, -134.46], point + [113.383, -138.226], point + [110.273, -141.605]);
+    path0.cubicCurveTo(point + [104.684, -147.687], point + [96.559, -160.663], point + [94.84, -166.257]);
+    path0.cubicCurveTo(point + [94.367, -167.796], point + [93.754, -173.737], point + [93.48, -179.456]);
+    path0.cubicCurveTo(point + [93.207, -185.175], point + [92.648, -191.655], point + [92.238, -193.859]);
+    path0.cubicCurveTo(point + [90.828, -201.394], point + [88.203, -223.456], point + [87.047, -237.456]);
+    path0.cubicCurveTo(point + [84.625, -266.831], point + [84.191, -276.714], point + [83.48, -319.058]);
+    path0.cubicCurveTo(point + [83.074, -343.038], point + [82.395, -365.175], point + [81.969, -368.257]);
+    path0.cubicCurveTo(point + [77.633, -399.503], point + [77.133, -412.776], point + [78.391, -463.058]);
+    path0.cubicCurveTo(point + [79.121, -492.234], point + [78.422, -526.968], point + [77.043, -530.159]);
+    path0.cubicCurveTo(point + [76.406, -531.628], point + [76.504, -532.382], point + [77.469, -533.444]);
+    path0.cubicCurveTo(point + [78.152, -534.202], point + [79.352, -536.632], point + [80.133, -538.843]);
+    path0.cubicCurveTo(point + [81.402, -542.456], point + [88.703, -554.882], point + [92.426, -559.765]);
+    path0.cubicCurveTo(point + [95.051, -563.21], point + [94.375, -564.441], point + [89.277, -565.484]);
+    path0.cubicCurveTo(point + [86.75, -566.003], point + [82.68, -567.112], point + [80.234, -567.948]);
+    path0.cubicCurveTo(point + [76.266, -569.312], point + [75.41, -569.359], point + [72.234, -568.39]);
+    path0.cubicCurveTo(point + [68.734, -567.327], point + [58.055, -560.3], point + [53.605, -556.14]);
+    path0.cubicCurveTo(point + [51.73, -554.386], point + [51.422, -553.577], point + [51.832, -551.534]);
+    path0.cubicCurveTo(point + [52.984, -545.784], point + [53.148, -546.015], point + [46.277, -543.698]);
+    path0.cubicCurveTo(point + [38.352, -541.023], point + [31.906, -540.105], point + [30.316, -541.425]);
+    path0.cubicCurveTo(point + [29.684, -541.948], point + [28.555, -544.241], point + [27.809, -546.519]);
+    path0.cubicCurveTo(point + [27.059, -548.796], point + [25.43, -551.827], point + [24.184, -553.261]);
+    path0.cubicCurveTo(point + [22.203, -555.542], point + [22.031, -556.12], point + [22.832, -557.878]);
+    path0.cubicCurveTo(point + [23.637, -559.636], point + [23.477, -560.171], point + [21.559, -562.171]);
+    path0.cubicCurveTo(point + [19.715, -564.097], point + [19.453, -564.901], point + [19.895, -567.253]);
+    path0.cubicCurveTo(point + [20.277, -569.296], point + [19.969, -570.929], point + [18.75, -573.319]);
+    path0.cubicCurveTo(point + [17.832, -575.12], point + [17.078, -577.316], point + [17.078, -578.194]);
+    path0.cubicCurveTo(point + [17.078, -579.077], point + [16.395, -581.698], point + [15.555, -584.026]);
+    path0.cubicCurveTo(point + [14.719, -586.355], point + [13.801, -590.776], point + [13.516, -593.859]);
+    path0.cubicCurveTo(point + [13.117, -598.167], point + [12.191, -601.112], point + [9.492, -606.655]);
+    path0.cubicCurveTo(point + [7.191, -611.374], point + [5.789, -615.491], point + [5.422, -618.601]);
+    path0.cubicCurveTo(point + [5.113, -621.21], point + [4.031, -625.171], point + [3.016, -627.401]);
+    path0.cubicCurveTo(point + [1.434, -630.886], point + [1.066, -633.538], point + [0.406, -646.257]);
+    path0.cubicCurveTo(point + [-0.574, -665.202], point + [0.141, -674.101], point + [3.379, -683.386]);
+    path0.cubicCurveTo(point + [4.746, -687.308], point + [6.473, -691.448], point + [7.215, -692.585]);
+    path0.cubicCurveTo(point + [9.621, -696.284], point + [39.516, -728.421], point + [42.828, -730.874]);
+    path0.cubicCurveTo(point + [43.582, -731.437], point + [46.965, -735.148], point + [50.34, -739.128]);
+    path0.cubicCurveTo(point + [53.719, -743.109], point + [58.684, -748.179], point + [61.379, -750.394]);
+    path0.cubicCurveTo(point + [64.074, -752.612], point + [73.59, -762.038], point + [82.527, -771.343]);
+    path0.cubicCurveTo(point + [95.215, -784.55], point + [99.285, -789.312], point + [101.094, -793.062]);
+    path0.cubicCurveTo(point + [102.367, -795.702], point + [104.824, -799.245], point + [106.555, -800.937]);
+    path0.cubicCurveTo(point + [109.223, -803.542], point + [110.418, -804.097], point + [114.391, -804.585]);
+    path0.cubicCurveTo(point + [116.969, -804.898], point + [120.289, -805.796], point + [121.77, -806.573]);
+    path0.cubicCurveTo(point + [123.25, -807.355], point + [127.75, -809.191], point + [131.77, -810.659]);
+    path0.cubicCurveTo(point + [135.789, -812.124], point + [140.52, -813.941], point + [142.277, -814.694]);
+    path0.cubicCurveTo(point + [144.039, -815.444], point + [148.539, -816.905], point + [152.277, -817.937]);
+    path0.cubicCurveTo(point + [159.797, -820.011], point + [160.328, -820.452], point + [167.457, -830.655]);
+    path0.cubicCurveTo(point + [175.559, -842.245], point + [177.074, -843.026], point + [177.082, -835.609]);
+    path0.cubicCurveTo(point + [177.09, -830.042], point + [179.426, -826.37], point + [185.48, -822.401]);
+    path0.cubicCurveTo(point + [188.117, -820.671], point + [191.898, -817.554], point + [193.879, -815.472]);
+    path0.cubicCurveTo(point + [197.68, -811.476], point + [201.891, -809.202], point + [207.117, -808.319]);
+    path0.cubicCurveTo(point + [209.953, -807.839], point + [210.277, -807.542], point + [210.277, -805.456]);
+    path0.cubicCurveTo(point + [210.277, -804.05], point + [209.645, -802.659], point + [208.68, -801.952]);
+    path0.cubicCurveTo(point + [207.102, -800.792], point + [207.109, -800.745], point + [209.277, -798.472]);
+    path0.cubicCurveTo(point + [212.266, -795.343], point + [212.172, -793.917], point + [209.023, -794.55]);
+    path0.cubicCurveTo(point + [205.051, -795.343], point + [206.375, -792.64], point + [210.695, -791.124]);
+    path0.cubicCurveTo(point + [215.512, -789.437], point + [216.02, -789.038], point + [216.488, -786.581]);
+    path0.cubicCurveTo(point + [216.77, -785.116], point + [216.41, -784.081], point + [215.309, -783.167]);
+    path0.cubicCurveTo(point + [213.023, -781.273], point + [212.262, -778.886], point + [213.484, -777.456]);
+    path0.cubicCurveTo(point + [214.344, -776.452], point + [213.859, -775.109], point + [210.543, -769.257]);
+    path0.cubicCurveTo(point + [208.359, -765.405], point + [206.238, -762.257], point + [205.828, -762.257]);
+    path0.cubicCurveTo(point + [204.563, -762.257], point + [205.0, -766.421], point + [206.367, -767.421]);
+    path0.cubicCurveTo(point + [207.527, -768.273], point + [207.441, -768.784], point + [205.473, -772.671]);
+    path0.cubicCurveTo(point + [203.18, -777.198], point + [199.898, -782.566], point + [198.09, -784.753]);
+    path0.cubicCurveTo(point + [197.195, -785.835], point + [196.406, -785.921], point + [193.309, -785.257]);
+    path0.cubicCurveTo(point + [190.109, -784.577], point + [189.453, -784.663], point + [188.563, -785.882]);
+    path0.cubicCurveTo(point + [187.609, -787.183], point + [187.461, -787.116], point + [186.672, -785.034]);
+    path0.cubicCurveTo(point + [185.594, -782.202], point + [186.117, -779.761], point + [189.84, -770.257]);
+    path0.cubicCurveTo(point + [191.48, -766.077], point + [193.273, -760.316], point + [193.828, -757.456]);
+    path0.cubicCurveTo(point + [194.383, -754.597], point + [195.176, -751.628], point + [195.586, -750.859]);
+    path0.cubicCurveTo(point + [196.609, -748.948], point + [198.457, -749.093], point + [199.105, -751.136]);
+    path0.cubicCurveTo(point + [199.5, -752.386], point + [200.125, -752.718], point + [201.547, -752.448]);
+    path0.cubicCurveTo(point + [203.012, -752.167], point + [203.945, -752.718], point + [205.512, -754.773]);
+    path0.cubicCurveTo(point + [206.641, -756.249], point + [207.934, -758.526], point + [208.387, -759.827]);
+    path0.cubicCurveTo(point + [208.84, -761.128], point + [209.902, -762.409], point + [210.746, -762.679]);
+    path0.cubicCurveTo(point + [211.59, -762.944], point + [212.652, -763.862], point + [213.109, -764.71]);
+    path0.cubicCurveTo(point + [213.563, -765.562], point + [214.461, -766.257], point + [215.105, -766.257]);
+    path0.cubicCurveTo(point + [215.816, -766.257], point + [216.277, -767.026], point + [216.277, -768.21]);
+    path0.cubicCurveTo(point + [216.277, -769.284], point + [216.652, -770.394], point + [217.113, -770.679]);
+    path0.cubicCurveTo(point + [217.57, -770.96], point + [218.719, -772.96], point + [219.66, -775.124]);
+    path0.cubicCurveTo(point + [220.746, -777.605], point + [221.879, -779.058], point + [222.73, -779.058]);
+    path0.cubicCurveTo(point + [225.004, -779.058], point + [225.766, -780.616], point + [227.238, -788.257]);
+    path0.cubicCurveTo(point + [227.492, -789.577], point + [229.555, -793.359], point + [231.816, -796.655]);
+    path0.cubicCurveTo(point + [236.102, -802.901], point + [245.434, -818.222], point + [247.887, -823.03]);
+    path0.cubicCurveTo(point + [248.855, -824.929], point + [249.289, -827.573], point + [249.266, -831.417]);
+    path0.cubicCurveTo(point + [249.234, -836.202], point + [248.984, -837.191], point + [247.555, -838.14]);
+    path0.cubicCurveTo(point + [245.66, -839.398], point + [245.254, -843.058], point + [247.012, -843.058]);
+    path0.cubicCurveTo(point + [247.633, -843.058], point + [249.605, -841.398], point + [251.391, -839.366]);
+    path0.cubicCurveTo(point + [254.707, -835.601], point + [255.859, -832.249], point + [255.629, -827.058]);
+    path0.cubicCurveTo(point + [255.172, -816.702], point + [255.902, -810.351], point + [257.625, -809.691]);
+    path0.cubicCurveTo(point + [258.922, -809.194], point + [260.461, -810.917], point + [259.746, -812.069]);
+    path0.cubicCurveTo(point + [259.512, -812.448], point + [259.555, -814.019], point + [259.844, -815.558]);
+    path0.cubicCurveTo(point + [260.309, -818.019], point + [260.629, -818.323], point + [262.523, -818.105]);
+    path0.cubicCurveTo(point + [264.59, -817.866], point + [264.68, -817.663], point + [264.68, -813.194]);
+    path0.cubicCurveTo(point + [264.68, -809.503], point + [265.004, -808.296], point + [266.23, -807.394]);
+    path0.cubicCurveTo(point + [267.086, -806.769], point + [268.074, -806.257], point + [268.434, -806.257]);
+    path0.cubicCurveTo(point + [269.418, -806.257], point + [269.203, -813.909], point + [268.148, -816.222]);
+    path0.cubicCurveTo(point + [267.051, -818.632], point + [267.734, -819.702], point + [269.461, -818.273]);
+    path0.cubicCurveTo(point + [270.211, -817.648], point + [270.68, -815.921], point + [270.68, -813.757]);
+    path0.cubicCurveTo(point + [270.68, -811.179], point + [270.996, -810.257], point + [271.879, -810.257]);
+    path0.cubicCurveTo(point + [272.629, -810.257], point + [273.078, -811.015], point + [273.078, -812.28]);
+    path0.cubicCurveTo(point + [273.078, -813.398], point + [273.57, -814.495], point + [274.168, -814.726]);
+    path0.cubicCurveTo(point + [275.254, -815.14], point + [280.215, -812.515], point + [287.898, -807.456]);
+    path0.cubicCurveTo(point + [290.105, -806.003], point + [293.707, -803.995], point + [295.898, -802.999]);
+    path0.cubicCurveTo(point + [308.715, -797.159], point + [310.578, -795.96], point + [311.367, -793.058]);
+    path0.cubicCurveTo(point + [311.844, -791.292], point + [312.426, -790.726], point + [313.551, -790.921]);
+    path0.cubicCurveTo(point + [318.133, -791.718], point + [318.914, -791.48], point + [319.672, -789.058]);
+    path0.cubicCurveTo(point + [320.086, -787.737], point + [320.941, -785.495], point + [321.578, -784.073]);
+    path0.cubicCurveTo(point + [322.215, -782.655], point + [323.805, -778.253], point + [325.109, -774.288]);
+    path0.cubicCurveTo(point + [326.418, -770.327], point + [328.203, -765.909], point + [329.078, -764.472]);
+    path0.cubicCurveTo(point + [330.984, -761.347], point + [331.098, -759.601], point + [329.48, -758.257]);
+    path0.cubicCurveTo(point + [328.82, -757.71], point + [328.277, -756.069], point + [328.277, -754.612]);
+    path0.cubicCurveTo(point + [328.277, -752.601], point + [328.84, -751.566], point + [330.609, -750.308]);
+    path0.cubicCurveTo(point + [332.293, -749.105], point + [333.098, -747.706], point + [333.512, -745.253]);
+    path0.cubicCurveTo(point + [334.039, -742.151], point + [335.383, -738.675], point + [339.461, -729.859]);
+    path0.cubicCurveTo(point + [340.277, -728.097], point + [341.176, -725.28], point + [341.457, -723.597]);
+    path0.cubicCurveTo(point + [341.742, -721.917], point + [342.652, -719.421], point + [343.484, -718.054]);
+    path0.cubicCurveTo(point + [344.316, -716.687], point + [344.813, -715.276], point + [344.59, -714.913]);
+    path0.cubicCurveTo(point + [344.367, -714.554], point + [344.746, -713.46], point + [345.434, -712.48]);
+    path0.cubicCurveTo(point + [346.117, -711.503], point + [346.68, -709.749], point + [346.68, -708.589]);
+    path0.cubicCurveTo(point + [346.68, -707.429], point + [347.734, -704.151], point + [349.023, -701.308]);
+    path0.cubicCurveTo(point + [352.012, -694.718], point + [353.926, -688.866], point + [356.688, -677.859]);
+    path0.cubicCurveTo(point + [358.777, -669.53], point + [358.863, -668.464], point + [358.305, -658.058]);
+    path0.cubicCurveTo(point + [357.98, -652.007], point + [357.449, -647.058], point + [357.121, -647.058]);
+    path0.cubicCurveTo(point + [356.016, -647.058], point + [354.09, -649.843], point + [353.531, -652.257]);
+    path0.cubicCurveTo(point + [353.223, -653.577], point + [352.879, -656.816], point + [352.762, -659.456]);
+    path0.cubicCurveTo(point + [352.449, -666.573], point + [349.699, -673.448], point + [347.156, -673.46]);
+    path0.cubicCurveTo(point + [346.672, -673.464], point + [345.578, -674.636], point + [344.727, -676.062]);
+    path0.cubicCurveTo(point + [340.805, -682.612], point + [335.133, -692.515], point + [333.844, -695.066]);
+    path0.cubicCurveTo(point + [333.063, -696.612], point + [331.672, -698.558], point + [330.754, -699.39]);
+    path0.cubicCurveTo(point + [329.832, -700.222], point + [329.07, -701.3], point + [329.059, -701.78]);
+    path0.cubicCurveTo(point + [329.02, -703.253], point + [323.465, -708.741], point + [322.574, -708.191]);
+    path0.cubicCurveTo(point + [321.445, -707.495], point + [322.41, -702.659], point + [324.383, -699.093]);
+    path0.cubicCurveTo(point + [327.41, -693.636], point + [328.133, -692.23], point + [329.801, -688.569]);
+    path0.cubicCurveTo(point + [330.723, -686.542], point + [331.48, -684.589], point + [331.48, -684.234]);
+    path0.cubicCurveTo(point + [331.48, -683.874], point + [331.977, -683.015], point + [332.582, -682.319]);
+    path0.cubicCurveTo(point + [334.117, -680.566], point + [342.68, -663.948], point + [342.68, -662.726]);
+    path0.cubicCurveTo(point + [342.68, -662.179], point + [343.738, -660.132], point + [345.035, -658.175]);
+    path0.cubicCurveTo(point + [346.328, -656.218], point + [347.727, -653.12], point + [348.137, -651.284]);
+    path0.cubicCurveTo(point + [348.551, -649.452], point + [349.648, -646.984], point + [350.582, -645.796]);
+    path0.cubicCurveTo(point + [351.516, -644.612], point + [352.277, -642.991], point + [352.277, -642.194]);
+    path0.cubicCurveTo(point + [352.277, -641.401], point + [352.602, -640.554], point + [352.996, -640.308]);
+    path0.cubicCurveTo(point + [353.387, -640.066], point + [353.898, -638.515], point + [354.129, -636.862]);
+    path0.cubicCurveTo(point + [354.773, -632.261], point + [355.52, -629.292], point + [356.699, -626.644]);
+    path0.cubicCurveTo(point + [357.344, -625.198], point + [357.602, -622.913], point + [357.336, -620.948]);
+    path0.cubicCurveTo(point + [357.066, -618.937], point + [357.242, -617.452], point + [357.789, -617.112]);
+    path0.cubicCurveTo(point + [358.277, -616.812], point + [358.68, -615.878], point + [358.68, -615.038]);
+    path0.cubicCurveTo(point + [358.68, -614.198], point + [359.336, -613.159], point + [360.141, -612.73]);
+    path0.cubicCurveTo(point + [362.27, -611.593], point + [365.34, -605.214], point + [368.105, -596.171]);
+    path0.cubicCurveTo(point + [371.707, -584.409], point + [371.813, -583.605], point + [369.926, -581.898]);
+    path0.cubicCurveTo(point + [368.473, -580.585], point + [368.262, -580.566], point + [367.816, -581.734]);
+    path0.cubicCurveTo(point + [367.543, -582.444], point + [366.074, -583.792], point + [364.555, -584.734]);
+    path0.cubicCurveTo(point + [361.871, -586.394], point + [361.758, -586.398], point + [360.66, -584.948]);
+    path0.cubicCurveTo(point + [358.703, -582.362], point + [359.293, -579.179], point + [362.625, -574.382]);
+    path0.cubicCurveTo(point + [364.355, -571.894], point + [366.527, -567.577], point + [367.457, -564.792]);
+    path0.cubicCurveTo(point + [368.383, -562.007], point + [369.988, -558.948], point + [371.027, -557.991]);
+    path0.cubicCurveTo(point + [372.066, -557.038], point + [373.117, -555.116], point + [373.363, -553.722]);
+    path0.cubicCurveTo(point + [373.797, -551.288], point + [373.688, -551.163], point + [370.645, -550.651]);
+    path0.cubicCurveTo(point + [367.352, -550.093], point + [366.441, -548.78], point + [368.902, -548.136]);
+    path0.cubicCurveTo(point + [369.719, -547.921], point + [371.004, -546.007], point + [371.918, -543.644]);
+    path0.cubicCurveTo(point + [373.719, -538.98], point + [374.715, -538.464], point + [382.145, -538.335]);
+    path0.cubicCurveTo(point + [385.5, -538.28], point + [386.719, -537.976], point + [386.477, -537.257]);
+    path0.cubicCurveTo(point + [386.277, -536.671], point + [384.672, -536.234], point + [382.609, -536.198]);
+    path0.cubicCurveTo(point + [376.203, -536.089], point + [373.746, -534.292], point + [376.68, -531.859]);
+    path0.cubicCurveTo(point + [377.34, -531.308], point + [377.879, -530.175], point + [377.879, -529.335]);
+    path0.cubicCurveTo(point + [377.879, -528.495], point + [378.43, -527.597], point + [379.102, -527.339]);
+    path0.cubicCurveTo(point + [379.773, -527.077], point + [381.078, -525.218], point + [381.996, -523.202]);
+    path0.cubicCurveTo(point + [384.762, -517.124], point + [389.742, -510.937], point + [391.742, -511.097]);
+    path0.cubicCurveTo(point + [394.93, -511.351], point + [395.32, -511.073], point + [395.449, -508.456]);
+    path0.cubicCurveTo(point + [395.523, -507.026], point + [395.648, -504.237], point + [395.73, -502.257]);
+    path0.cubicCurveTo(point + [395.813, -500.276], point + [396.309, -498.202], point + [396.832, -497.644]);
+    path0.cubicCurveTo(point + [397.992, -496.413], point + [396.691, -491.964], point + [394.977, -491.308]);
+    path0.cubicCurveTo(point + [393.18, -490.616], point + [393.727, -488.726], point + [395.879, -488.187]);
+    path0.cubicCurveTo(point + [396.98, -487.909], point + [397.879, -487.394], point + [397.879, -487.038]);
+    path0.cubicCurveTo(point + [397.879, -486.335], point + [390.918, -484.655], point + [388.0, -484.655]);
+    path0.cubicCurveTo(point + [387.008, -484.655], point + [385.797, -484.257], point + [385.305, -483.765]);
+    path0.cubicCurveTo(point + [384.816, -483.273], point + [383.574, -482.456], point + [382.547, -481.944]);
+    path0.cubicCurveTo(point + [381.359, -481.359], point + [380.582, -480.163], point + [380.41, -478.671]);
+    path0.cubicCurveTo(point + [380.262, -477.378], point + [379.273, -475.296], point + [378.215, -474.038]);
+    path0.lineTo(point + [376.293, -471.749]);
+    path0.lineTo(point + [379.777, -465.694]);
+    path0.lineTo(point + [378.094, -462.843]);
+    path0.cubicCurveTo(point + [376.852, -460.734], point + [376.523, -459.167], point + [376.836, -456.827]);
+    path0.cubicCurveTo(point + [377.305, -453.331], point + [376.348, -452.136], point + [374.059, -453.359]);
+    path0.cubicCurveTo(point + [372.574, -454.155], point + [370.895, -462.976], point + [370.465, -472.257]);
+    path0.lineTo(point + [370.277, -476.257]);
+    path0.lineTo(point + [361.078, -476.655]);
+    path0.cubicCurveTo(point + [356.02, -476.878], point + [351.43, -477.347], point + [350.879, -477.702]);
+    path0.cubicCurveTo(point + [350.328, -478.062], point + [349.879, -479.245], point + [349.879, -480.339]);
+    path0.cubicCurveTo(point + [349.879, -485.179], point + [336.137, -538.206], point + [327.199, -567.859]);
+    path0.cubicCurveTo(point + [323.277, -580.87], point + [318.77, -594.73], point + [312.883, -611.866]);
+    path0.cubicCurveTo(point + [309.148, -622.737], point + [307.418, -629.222], point + [306.363, -636.265]);
+    path0.cubicCurveTo(point + [305.574, -641.542], point + [304.395, -648.015], point + [303.746, -650.655]);
+    path0.cubicCurveTo(point + [301.578, -659.476], point + [299.492, -671.347], point + [298.969, -677.835]);
+    path0.cubicCurveTo(point + [298.332, -685.73], point + [297.602, -687.859], point + [295.531, -687.859]);
+    path0.cubicCurveTo(point + [294.363, -687.859], point + [293.734, -687.054], point + [293.164, -684.859]);
+    path0.cubicCurveTo(point + [292.734, -683.206], point + [292.02, -680.417], point + [291.57, -678.655]);
+    path0.cubicCurveTo(point + [291.121, -676.898], point + [290.387, -672.48], point + [289.938, -668.843]);
+    path0.cubicCurveTo(point + [288.648, -658.398], point + [286.934, -656.659], point + [283.469, -662.28]);
+    path0.cubicCurveTo(point + [279.973, -667.944], point + [272.277, -671.706], point + [272.277, -667.753]);
+    path0.cubicCurveTo(point + [272.277, -666.144], point + [277.215, -660.655], point + [278.664, -660.655]);
+    path0.cubicCurveTo(point + [279.035, -660.655], point + [280.809, -659.694], point + [282.605, -658.515]);
+    path0.cubicCurveTo(point + [286.582, -655.909], point + [286.684, -654.749], point + [283.598, -646.878]);
+    path0.cubicCurveTo(point + [280.875, -639.929], point + [280.379, -631.409], point + [282.277, -624.144]);
+    path0.cubicCurveTo(point + [282.953, -621.566], point + [283.727, -617.573], point + [284.0, -615.273]);
+    path0.cubicCurveTo(point + [284.41, -611.823], point + [284.262, -610.999], point + [283.172, -610.581]);
+    path0.cubicCurveTo(point + [282.305, -610.249], point + [281.289, -610.788], point + [280.207, -612.167]);
+    path0.cubicCurveTo(point + [278.289, -614.605], point + [276.059, -614.968], point + [276.43, -612.78]);
+    path0.cubicCurveTo(point + [276.566, -611.968], point + [276.199, -610.722], point + [275.609, -610.015]);
+    path0.cubicCurveTo(point + [275.023, -609.308], point + [274.766, -608.362], point + [275.043, -607.913]);
+    path0.cubicCurveTo(point + [275.84, -606.628], point + [280.914, -604.46], point + [281.816, -605.019]);
+    path0.cubicCurveTo(point + [283.191, -605.87], point + [285.473, -602.378], point + [285.598, -599.23]);
+    path0.cubicCurveTo(point + [285.66, -597.593], point + [286.281, -592.476], point + [286.977, -587.859]);
+    path0.cubicCurveTo(point + [288.809, -575.691], point + [289.461, -548.405], point + [288.281, -533.456]);
+    path0.cubicCurveTo(point + [287.742, -526.636], point + [287.332, -516.917], point + [287.367, -511.859]);
+    path0.cubicCurveTo(point + [287.453, -500.472], point + [289.426, -481.335], point + [290.965, -476.98]);
+    path0.cubicCurveTo(point + [292.035, -473.941], point + [293.461, -464.191], point + [295.453, -446.257]);
+    path0.cubicCurveTo(point + [297.25, -430.069], point + [298.156, -410.972], point + [299.078, -369.859]);
+    path0.cubicCurveTo(point + [299.297, -360.175], point + [299.859, -337.073], point + [300.328, -318.515]);
+    path0.cubicCurveTo(point + [300.797, -299.956], point + [301.25, -260.894], point + [301.332, -231.714]);
+    path0.cubicCurveTo(point + [301.539, -156.773], point + [300.934, -150.562], point + [291.305, -129.023]);
+    path0.cubicCurveTo(point + [286.93, -119.23], point + [276.211, -100.417], point + [266.484, -85.456]);
+    path0.cubicCurveTo(point + [258.758, -73.573], point + [258.586, -72.069], point + [264.621, -69.398]);
+    path0.cubicCurveTo(point + [267.223, -68.249], point + [269.059, -67.964], point + [271.422, -68.339]);
+    path0.cubicCurveTo(point + [274.531, -68.839], point + [274.859, -68.671], point + [279.707, -64.159]);
+    path0.cubicCurveTo(point + [282.48, -61.573], point + [287.309, -58.066], point + [290.43, -56.37]);
+    path0.cubicCurveTo(point + [293.551, -54.671], point + [297.953, -51.667], point + [300.211, -49.691]);
+    path0.cubicCurveTo(point + [304.023, -46.355], point + [310.867, -42.269], point + [312.652, -42.261]);
+    path0.cubicCurveTo(point + [313.078, -42.261], point + [314.969, -41.667], point + [316.852, -40.948]);
+    path0.cubicCurveTo(point + [319.617, -39.894], point + [320.277, -39.253], point + [320.277, -37.655]);
+    path0.cubicCurveTo(point + [320.277, -35.944], point + [320.527, -35.757], point + [322.078, -36.292]);
+    path0.cubicCurveTo(point + [325.121, -37.339], point + [330.094, -36.835], point + [334.074, -35.069]);
+    path0.cubicCurveTo(point + [337.68, -33.472], point + [337.813, -33.296], point + [336.773, -31.62]);
+    path0.cubicCurveTo(point + [335.664, -29.843], point + [334.406, -24.655], point + [335.082, -24.655]);
+    path0.cubicCurveTo(point + [335.281, -24.655], point + [336.168, -26.073], point + [337.051, -27.804]);
+    path0.cubicCurveTo(point + [339.07, -31.757], point + [340.016, -32.343], point + [341.793, -30.734]);
+    path0.cubicCurveTo(point + [342.57, -30.03], point + [343.512, -29.456], point + [343.891, -29.456]);
+    path0.cubicCurveTo(point + [344.266, -29.456], point + [345.414, -28.667], point + [346.441, -27.702]);
+    path0.cubicCurveTo(point + [348.297, -25.96], point + [348.328, -25.96], point + [352.336, -27.398]);
+    path0.cubicCurveTo(point + [356.246, -28.804], point + [356.395, -28.804], point + [357.496, -27.351]);
+    path0.cubicCurveTo(point + [359.113, -25.218], point + [358.949, -24.655], point + [356.707, -24.655]);
+    path0.cubicCurveTo(point + [355.484, -24.655], point + [354.371, -23.976], point + [353.781, -22.874]);
+    path0.cubicCurveTo(point + [353.254, -21.894], point + [352.328, -20.589], point + [351.715, -19.98]);
+    path0.cubicCurveTo(point + [350.77, -19.034], point + [350.789, -18.62], point + [351.852, -17.163]);
+    path0.cubicCurveTo(point + [352.535, -16.226], point + [353.445, -14.636], point + [353.875, -13.636]);
+    path0.cubicCurveTo(point + [354.305, -12.636], point + [355.219, -11.601], point + [355.91, -11.335]);
+    path0.cubicCurveTo(point + [357.699, -10.648], point + [362.711, -13.511], point + [363.559, -15.706]);
+    path0.cubicCurveTo(point + [364.43, -17.948], point + [365.879, -17.288], point + [365.879, -14.648]);
+    path0.cubicCurveTo(point + [365.879, -13.28], point + [364.852, -12.026], point + [362.277, -10.257]);
+    path0.cubicCurveTo(point + [360.301, -8.894], point + [358.68, -7.417], point + [358.68, -6.976]);
+    path0.cubicCurveTo(point + [358.68, -5.773], point + [350.203, -2.249], point + [344.277, -0.987]);
+    path0.cubicCurveTo(point + [338.676, 0.2], point + [323.0, 0.341], point + [311.332, -0.698]);
+    path0.closePath();
+
+    var path1 = new Path();
+    path1.moveTo(point + [72.078, -11.257]);
+    path1.cubicCurveTo(point + [71.574, -12.769], point + [69.078, -12.987], point + [69.078, -11.515]);
+    path1.cubicCurveTo(point + [69.078, -10.773], point + [69.762, -10.257], point + [70.746, -10.257]);
+    path1.cubicCurveTo(point + [71.723, -10.257], point + [72.273, -10.671], point + [72.078, -11.257]);
+    path1.closePath();
+
+    var path2 = new Path();
+    path2.moveTo(point + [105.023, -31.89]);
+    path2.cubicCurveTo(point + [107.855, -32.776], point + [110.613, -33.87], point + [111.156, -34.319]);
+    path2.cubicCurveTo(point + [112.438, -35.382], point + [112.238, -44.007], point + [110.922, -44.444]);
+    path2.cubicCurveTo(point + [109.664, -44.862], point + [106.715, -38.698], point + [107.227, -36.73]);
+    path2.cubicCurveTo(point + [107.492, -35.718], point + [107.059, -34.89], point + [105.953, -34.296]);
+    path2.cubicCurveTo(point + [104.48, -33.511], point + [104.277, -33.62], point + [104.266, -35.23]);
+    path2.cubicCurveTo(point + [104.25, -37.148], point + [99.758, -41.437], point + [95.945, -43.171]);
+    path2.cubicCurveTo(point + [94.145, -43.991], point + [93.613, -43.886], point + [92.02, -42.39]);
+    path2.cubicCurveTo(point + [91.004, -41.437], point + [89.57, -40.655], point + [88.828, -40.655]);
+    path2.cubicCurveTo(point + [85.207, -40.655], point + [89.004, -35.585], point + [95.195, -32.144]);
+    path2.cubicCurveTo(point + [99.105, -29.972], point + [98.914, -29.976], point + [105.023, -31.89]);
+    path2.closePath();
+
+    var path3 = new Path();
+    path3.moveTo(point + [96.82, -34.577]);
+    path3.cubicCurveTo(point + [96.582, -35.194], point + [96.602, -35.913], point + [96.859, -36.171]);
+    path3.cubicCurveTo(point + [97.426, -36.737], point + [99.48, -35.155], point + [99.48, -34.159]);
+    path3.cubicCurveTo(point + [99.48, -33.015], point + [97.285, -33.359], point + [96.82, -34.577]);
+    path3.closePath();
+
+    var path4 = new Path();
+    path4.moveTo(point + [81.48, -32.655]);
+    path4.cubicCurveTo(point + [81.207, -33.097], point + [80.824, -33.456], point + [80.633, -33.456]);
+    path4.cubicCurveTo(point + [80.438, -33.456], point + [80.277, -33.097], point + [80.277, -32.655]);
+    path4.cubicCurveTo(point + [80.277, -32.218], point + [80.66, -31.859], point + [81.125, -31.859]);
+    path4.cubicCurveTo(point + [81.594, -31.859], point + [81.75, -32.218], point + [81.48, -32.655]);
+    path4.closePath();
+
+    var path5 = new Path();
+    path5.moveTo(point + [135.281, -46.456]);
+    path5.cubicCurveTo(point + [135.074, -47.081], point + [133.031, -47.546], point + [129.816, -47.698]);
+    path5.cubicCurveTo(point + [126.531, -47.855], point + [124.969, -47.667], point + [125.48, -47.175]);
+    path5.cubicCurveTo(point + [127.301, -45.437], point + [135.824, -44.812], point + [135.281, -46.456]);
+    path5.closePath();
+
+    var path6 = new Path();
+    path6.moveTo(point + [202.355, -136.655]);
+    path6.cubicCurveTo(point + [202.465, -157.526], point + [205.348, -177.456], point + [210.445, -192.589]);
+    path6.cubicCurveTo(point + [212.715, -199.335], point + [214.25, -205.46], point + [214.488, -208.737]);
+    path6.cubicCurveTo(point + [214.844, -213.577], point + [214.605, -214.64], point + [211.625, -221.534]);
+    path6.cubicCurveTo(point + [207.008, -232.23], point + [206.754, -233.573], point + [205.852, -252.257]);
+    path6.cubicCurveTo(point + [204.859, -272.812], point + [204.184, -276.581], point + [200.469, -282.257]);
+    path6.cubicCurveTo(point + [197.91, -286.167], point + [197.523, -287.456], point + [196.988, -293.859]);
+    path6.cubicCurveTo(point + [196.66, -297.816], point + [196.016, -303.757], point + [195.559, -307.058]);
+    path6.cubicCurveTo(point + [195.102, -310.359], point + [194.719, -316.948], point + [194.703, -321.702]);
+    path6.cubicCurveTo(point + [194.676, -331.659], point + [193.27, -341.651], point + [191.957, -341.222]);
+    path6.cubicCurveTo(point + [189.91, -340.558], point + [189.262, -334.566], point + [188.738, -311.48]);
+    path6.cubicCurveTo(point + [188.441, -298.269], point + [187.859, -282.058], point + [187.445, -275.456]);
+    path6.cubicCurveTo(point + [184.891, -234.538], point + [184.105, -222.917], point + [182.641, -204.257]);
+    path6.cubicCurveTo(point + [181.742, -192.816], point + [180.305, -177.155], point + [179.449, -169.456]);
+    path6.cubicCurveTo(point + [177.086, -148.187], point + [177.02, -148.784], point + [182.523, -141.991]);
+    path6.cubicCurveTo(point + [185.078, -138.835], point + [189.832, -132.909], point + [193.086, -128.823]);
+    path6.cubicCurveTo(point + [197.543, -123.218], point + [199.402, -121.444], point + [200.641, -121.62]);
+    path6.cubicCurveTo(point + [202.223, -121.847], point + [202.281, -122.374], point + [202.355, -136.655]);
+    path6.closePath();
+
+    var path7 = new Path();
+    path7.moveTo(point + [379.465, -499.257]);
+    path7.cubicCurveTo(point + [379.461, -499.808], point + [379.113, -500.792], point + [378.699, -501.448]);
+    path7.cubicCurveTo(point + [377.711, -503.011], point + [375.848, -501.331], point + [376.547, -499.511]);
+    path7.cubicCurveTo(point + [377.117, -498.023], point + [379.484, -497.816], point + [379.465, -499.257]);
+    path7.closePath();
+
+    var path8 = new Path();
+    path8.moveTo(point + [218.078, -577.995]);
+    path8.cubicCurveTo(point + [219.641, -578.921], point + [217.672, -585.237], point + [214.469, -589.569]);
+    path8.cubicCurveTo(point + [213.336, -591.105], point + [212.57, -593.745], point + [212.168, -597.538]);
+    path8.cubicCurveTo(point + [211.832, -600.659], point + [210.82, -604.628], point + [209.918, -606.359]);
+    path8.cubicCurveTo(point + [209.016, -608.089], point + [208.277, -610.206], point + [208.277, -611.062]);
+    path8.cubicCurveTo(point + [208.277, -613.019], point + [205.336, -620.823], point + [201.629, -628.706]);
+    path8.cubicCurveTo(point + [200.066, -632.034], point + [198.527, -635.816], point + [198.215, -637.109]);
+    path8.cubicCurveTo(point + [197.902, -638.398], point + [196.824, -641.183], point + [195.816, -643.288]);
+    path8.cubicCurveTo(point + [194.813, -645.398], point + [193.758, -648.187], point + [193.473, -649.491]);
+    path8.cubicCurveTo(point + [192.906, -652.058], point + [191.922, -652.562], point + [191.191, -650.655]);
+    path8.cubicCurveTo(point + [190.938, -649.995], point + [190.359, -649.456], point + [189.902, -649.456]);
+    path8.cubicCurveTo(point + [188.84, -649.456], point + [188.84, -653.526], point + [189.91, -656.335]);
+    path8.cubicCurveTo(point + [192.523, -663.21], point + [182.07, -659.163], point + [178.344, -651.859]);
+    path8.cubicCurveTo(point + [176.91, -649.046], point + [174.977, -640.03], point + [173.844, -630.87]);
+    path8.cubicCurveTo(point + [173.313, -626.589], point + [172.473, -622.542], point + [171.977, -621.874]);
+    path8.cubicCurveTo(point + [170.809, -620.296], point + [161.023, -619.765], point + [160.5, -621.253]);
+    path8.cubicCurveTo(point + [160.305, -621.8], point + [161.004, -622.573], point + [162.047, -622.968]);
+    path8.cubicCurveTo(point + [164.797, -624.015], point + [165.988, -625.765], point + [168.027, -631.741]);
+    path8.cubicCurveTo(point + [170.379, -638.648], point + [170.34, -638.995], point + [167.48, -636.257]);
+    path8.cubicCurveTo(point + [166.16, -634.991], point + [165.078, -633.573], point + [165.074, -633.109]);
+    path8.cubicCurveTo(point + [165.07, -631.765], point + [159.688, -626.257], point + [158.383, -626.257]);
+    path8.cubicCurveTo(point + [156.793, -626.257], point + [152.277, -622.39], point + [152.277, -621.03]);
+    path8.cubicCurveTo(point + [152.277, -620.433], point + [151.289, -619.472], point + [150.078, -618.89]);
+    path8.cubicCurveTo(point + [148.723, -618.241], point + [147.535, -616.776], point + [146.977, -615.058]);
+    path8.cubicCurveTo(point + [146.371, -613.183], point + [145.461, -612.14], point + [144.18, -611.839]);
+    path8.cubicCurveTo(point + [142.926, -611.55], point + [141.512, -609.976], point + [140.016, -607.206]);
+    path8.cubicCurveTo(point + [138.77, -604.898], point + [136.883, -602.441], point + [135.816, -601.741]);
+    path8.cubicCurveTo(point + [134.563, -600.921], point + [133.879, -599.714], point + [133.879, -598.323]);
+    path8.cubicCurveTo(point + [133.879, -597.144], point + [133.445, -595.745], point + [132.918, -595.218]);
+    path8.cubicCurveTo(point + [132.195, -594.491], point + [132.184, -594.03], point + [132.883, -593.335]);
+    path8.cubicCurveTo(point + [134.176, -592.042], point + [147.965, -588.702], point + [152.105, -588.679]);
+    path8.cubicCurveTo(point + [153.988, -588.667], point + [156.758, -588.144], point + [158.254, -587.519]);
+    path8.cubicCurveTo(point + [159.754, -586.894], point + [161.746, -586.581], point + [162.68, -586.827]);
+    path8.cubicCurveTo(point + [163.617, -587.069], point + [165.172, -586.866], point + [166.133, -586.374]);
+    path8.cubicCurveTo(point + [169.035, -584.882], point + [177.191, -583.058], point + [180.945, -583.058]);
+    path8.cubicCurveTo(point + [183.992, -583.058], point + [184.34, -583.222], point + [183.48, -584.257]);
+    path8.cubicCurveTo(point + [182.93, -584.917], point + [181.988, -585.456], point + [181.383, -585.456]);
+    path8.cubicCurveTo(point + [179.559, -585.456], point + [180.141, -586.925], point + [182.07, -587.202]);
+    path8.cubicCurveTo(point + [185.238, -587.651], point + [184.938, -589.812], point + [180.492, -598.491]);
+    path8.cubicCurveTo(point + [179.258, -600.901], point + [179.402, -602.335], point + [182.723, -620.655]);
+    path8.cubicCurveTo(point + [183.559, -625.276], point + [184.48, -630.585], point + [184.766, -632.456]);
+    path8.cubicCurveTo(point + [185.051, -634.327], point + [185.629, -635.859], point + [186.055, -635.859]);
+    path8.cubicCurveTo(point + [186.539, -635.859], point + [186.574, -633.273], point + [186.152, -628.859]);
+    path8.cubicCurveTo(point + [185.188, -618.827], point + [185.594, -609.276], point + [187.133, -605.691]);
+    path8.cubicCurveTo(point + [189.32, -600.593], point + [191.281, -594.058], point + [191.859, -589.941]);
+    path8.cubicCurveTo(point + [192.164, -587.784], point + [192.797, -585.265], point + [193.27, -584.339]);
+    path8.cubicCurveTo(point + [193.742, -583.413], point + [194.375, -582.116], point + [194.676, -581.456]);
+    path8.cubicCurveTo(point + [195.398, -579.878], point + [199.094, -578.081], point + [203.078, -577.37]);
+    path8.cubicCurveTo(point + [206.164, -576.816], point + [216.848, -577.265], point + [218.078, -577.995]);
+    path8.closePath();
+
+    var path9 = new Path();
+    path9.moveTo(point + [155.879, -591.859]);
+    path9.cubicCurveTo(point + [155.605, -592.296], point + [155.746, -592.655], point + [156.184, -592.655]);
+    path9.cubicCurveTo(point + [156.625, -592.655], point + [157.207, -592.296], point + [157.48, -591.859]);
+    path9.cubicCurveTo(point + [157.75, -591.417], point + [157.613, -591.058], point + [157.172, -591.058]);
+    path9.cubicCurveTo(point + [156.734, -591.058], point + [156.152, -591.417], point + [155.879, -591.859]);
+    path9.closePath();
+
+    var path10 = new Path();
+    path10.moveTo(point + [82.465, -579.827]);
+    path10.cubicCurveTo(point + [85.891, -581.386], point + [95.207, -588.464], point + [98.441, -591.968]);
+    path10.cubicCurveTo(point + [101.707, -595.511], point + [102.879, -599.55], point + [101.926, -603.995]);
+    path10.cubicCurveTo(point + [100.496, -610.659], point + [102.082, -614.183], point + [108.727, -619.093]);
+    path10.cubicCurveTo(point + [112.398, -621.804], point + [112.949, -622.593], point + [113.434, -625.835]);
+    path10.cubicCurveTo(point + [113.734, -627.851], point + [115.078, -632.644], point + [116.414, -636.48]);
+    path10.cubicCurveTo(point + [118.781, -643.288], point + [118.828, -643.698], point + [118.297, -653.503]);
+    path10.cubicCurveTo(point + [117.871, -661.312], point + [118.039, -664.937], point + [119.035, -669.773]);
+    path10.cubicCurveTo(point + [120.75, -678.062], point + [120.074, -698.284], point + [117.684, -710.257]);
+    path10.cubicCurveTo(point + [115.945, -718.972], point + [115.246, -720.655], point + [113.371, -720.655]);
+    path10.cubicCurveTo(point + [111.305, -720.655], point + [98.301, -711.995], point + [94.543, -708.112]);
+    path10.cubicCurveTo(point + [92.492, -705.991], point + [88.531, -701.515], point + [85.746, -698.163]);
+    path10.cubicCurveTo(point + [82.957, -694.812], point + [78.297, -689.413], point + [75.383, -686.163]);
+    path10.cubicCurveTo(point + [72.469, -682.913], point + [69.324, -678.753], point + [68.395, -676.917]);
+    path10.cubicCurveTo(point + [67.469, -675.077], point + [64.48, -671.659], point + [61.754, -669.316]);
+    path10.cubicCurveTo(point + [59.031, -666.972], point + [55.988, -664.288], point + [54.992, -663.347]);
+    path10.lineTo(point + [53.184, -661.636]);
+    path10.lineTo(point + [55.113, -656.944]);
+    path10.cubicCurveTo(point + [57.48, -651.187], point + [57.563, -647.194], point + [55.457, -640.37]);
+    path10.cubicCurveTo(point + [53.977, -635.577], point + [53.938, -634.866], point + [55.016, -632.288]);
+    path10.cubicCurveTo(point + [55.664, -630.73], point + [57.105, -628.269], point + [58.215, -626.816]);
+    path10.cubicCurveTo(point + [59.32, -625.359], point + [60.793, -622.823], point + [61.48, -621.179]);
+    path10.cubicCurveTo(point + [63.375, -616.644], point + [65.879, -603.487], point + [65.879, -598.066]);
+    path10.cubicCurveTo(point + [65.879, -592.706], point + [68.07, -587.976], point + [73.488, -581.655]);
+    path10.cubicCurveTo(point + [76.766, -577.835], point + [77.668, -577.651], point + [82.465, -579.827]);
+    path10.closePath();
+
+    var path11 = new Path();
+    path11.moveTo(point + [272.277, -615.058]);
+    path11.cubicCurveTo(point + [272.277, -615.401], point + [271.75, -615.89], point + [271.105, -616.136]);
+    path11.cubicCurveTo(point + [269.785, -616.644], point + [268.734, -615.464], point + [269.457, -614.292]);
+    path11.cubicCurveTo(point + [269.98, -613.444], point + [272.277, -614.066], point + [272.277, -615.058]);
+    path11.closePath();
+
+    var path12 = new Path();
+    path12.moveTo(point + [257.5, -623.894]);
+    path12.cubicCurveTo(point + [258.25, -625.105], point + [256.219, -627.316], point + [255.246, -626.343]);
+    path12.cubicCurveTo(point + [254.348, -625.448], point + [255.047, -623.058], point + [256.207, -623.058]);
+    path12.cubicCurveTo(point + [256.633, -623.058], point + [257.215, -623.433], point + [257.5, -623.894]);
+    path12.closePath();
+
+    var path13 = new Path();
+    path13.moveTo(point + [274.68, -641.491]);
+    path13.cubicCurveTo(point + [274.68, -641.948], point + [272.43, -643.339], point + [269.68, -644.581]);
+    path13.cubicCurveTo(point + [266.93, -645.823], point + [263.992, -647.609], point + [263.156, -648.546]);
+    path13.cubicCurveTo(point + [262.316, -649.487], point + [261.309, -650.257], point + [260.914, -650.257]);
+    path13.cubicCurveTo(point + [259.574, -650.257], point + [248.715, -658.753], point + [242.168, -664.921]);
+    path13.cubicCurveTo(point + [238.453, -668.421], point + [234.957, -671.058], point + [234.027, -671.058]);
+    path13.cubicCurveTo(point + [233.133, -671.058], point + [231.32, -672.136], point + [230.004, -673.456]);
+    path13.cubicCurveTo(point + [227.297, -676.159], point + [226.68, -676.386], point + [226.68, -674.655]);
+    path13.cubicCurveTo(point + [226.68, -673.995], point + [227.055, -673.456], point + [227.516, -673.456]);
+    path13.cubicCurveTo(point + [227.973, -673.456], point + [231.676, -670.128], point + [235.742, -666.058]);
+    path13.cubicCurveTo(point + [240.641, -661.155], point + [244.406, -658.116], point + [246.898, -657.058]);
+    path13.cubicCurveTo(point + [248.988, -656.167], point + [250.668, -654.921], point + [250.672, -654.257]);
+    path13.cubicCurveTo(point + [250.684, -652.503], point + [257.777, -646.679], point + [261.488, -645.382]);
+    path13.cubicCurveTo(point + [263.242, -644.769], point + [264.93, -643.909], point + [265.238, -643.48]);
+    path13.cubicCurveTo(point + [266.617, -641.542], point + [274.68, -639.843], point + [274.68, -641.491]);
+    path13.closePath();
+
+    var path14 = new Path();
+    path14.moveTo(point + [197.445, -658.312]);
+    path14.cubicCurveTo(point + [196.758, -659.421], point + [196.277, -659.214], point + [196.277, -657.808]);
+    path14.cubicCurveTo(point + [196.277, -657.124], point + [196.645, -656.788], point + [197.094, -657.066]);
+    path14.cubicCurveTo(point + [197.539, -657.343], point + [197.699, -657.901], point + [197.445, -658.312]);
+    path14.closePath();
+
+    var path15 = new Path();
+    path15.moveTo(point + [269.879, -668.394]);
+    path15.cubicCurveTo(point + [269.879, -669.398], point + [267.234, -671.859], point + [266.156, -671.859]);
+    path15.cubicCurveTo(point + [264.723, -671.859], point + [264.797, -671.093], point + [266.402, -669.319]);
+    path15.cubicCurveTo(point + [267.691, -667.898], point + [269.879, -667.316], point + [269.879, -668.394]);
+    path15.closePath();
+
+    var path16 = new Path();
+    path16.moveTo(point + [195.336, -698.859]);
+    path16.cubicCurveTo(point + [195.82, -699.804], point + [195.559, -701.359], point + [194.535, -703.655]);
+    path16.cubicCurveTo(point + [192.781, -707.585], point + [190.617, -708.128], point + [188.656, -705.132]);
+    path16.cubicCurveTo(point + [187.523, -703.405], point + [187.52, -702.913], point + [188.594, -700.331]);
+    path16.cubicCurveTo(point + [189.598, -697.933], point + [190.195, -697.456], point + [192.211, -697.456]);
+    path16.cubicCurveTo(point + [193.703, -697.456], point + [194.895, -697.991], point + [195.336, -698.859]);
+    path16.closePath();
+
+    var path17 = new Path();
+    path17.moveTo(point + [191.035, -701.526]);
+    path17.cubicCurveTo(point + [190.211, -702.859], point + [192.066, -704.39], point + [193.168, -703.288]);
+    path17.cubicCurveTo(point + [194.094, -702.362], point + [193.516, -700.655], point + [192.277, -700.655]);
+    path17.cubicCurveTo(point + [191.891, -700.655], point + [191.332, -701.05], point + [191.035, -701.526]);
+    path17.closePath();
+
+    var path18 = new Path();
+    path18.moveTo(point + [330.773, -726.882]);
+    path18.cubicCurveTo(point + [330.352, -727.667], point + [329.156, -729.198], point + [328.113, -730.284]);
+    path18.cubicCurveTo(point + [327.074, -731.37], point + [325.793, -733.245], point + [325.266, -734.456]);
+    path18.cubicCurveTo(point + [324.309, -736.667], point + [322.406, -737.359], point + [321.469, -735.839]);
+    path18.cubicCurveTo(point + [320.73, -734.644], point + [325.281, -727.62], point + [327.543, -726.468]);
+    path18.cubicCurveTo(point + [330.426, -724.995], point + [331.695, -725.159], point + [330.773, -726.882]);
+    path18.closePath();
+
+    var path19 = new Path();
+    path19.moveTo(point + [186.137, -773.937]);
+    path19.cubicCurveTo(point + [185.828, -774.737], point + [185.395, -774.894], point + [184.883, -774.382]);
+    path19.cubicCurveTo(point + [183.965, -773.464], point + [184.852, -771.624], point + [185.898, -772.269]);
+    path19.cubicCurveTo(point + [186.289, -772.511], point + [186.398, -773.261], point + [186.137, -773.937]);
+    path19.closePath();
+
+    var path20 = new Path();
+    path20.moveTo(point + [251.555, -809.702]);
+    path20.cubicCurveTo(point + [250.508, -810.745], point + [250.363, -809.589], point + [251.254, -807.323]);
+    path20.cubicCurveTo(point + [251.813, -805.909], point + [251.844, -805.909], point + [252.129, -807.343]);
+    path20.cubicCurveTo(point + [252.293, -808.159], point + [252.035, -809.222], point + [251.555, -809.702]);
+    path20.closePath();
+
+    var path21 = new Path();
+    path21.moveTo(point + [403.91, -12.605]);
+    path21.cubicCurveTo(point + [403.656, -13.015], point + [403.84, -15.085], point + [404.32, -17.206]);
+    path21.cubicCurveTo(point + [405.508, -22.456], point + [404.523, -58.495], point + [403.004, -65.308]);
+    path21.cubicCurveTo(point + [402.387, -68.085], point + [401.871, -74.566], point + [401.863, -79.706]);
+    path21.cubicCurveTo(point + [401.852, -84.851], point + [401.289, -96.616], point + [400.613, -105.859]);
+    path21.cubicCurveTo(point + [399.938, -115.097], point + [399.074, -133.995], point + [398.703, -147.859]);
+    path21.cubicCurveTo(point + [398.035, -172.616], point + [396.945, -190.206], point + [395.516, -199.214]);
+    path21.cubicCurveTo(point + [395.055, -202.124], point + [395.109, -206.671], point + [395.668, -211.816]);
+    path21.cubicCurveTo(point + [396.602, -220.401], point + [395.371, -254.628], point + [393.898, -261.12]);
+    path21.cubicCurveTo(point + [393.125, -264.526], point + [393.559, -267.859], point + [394.773, -267.859]);
+    path21.cubicCurveTo(point + [395.16, -267.859], point + [395.484, -267.765], point + [395.496, -267.655]);
+    path21.cubicCurveTo(point + [395.832, -263.569], point + [397.316, -242.261], point + [397.477, -239.249]);
+    path21.cubicCurveTo(point + [397.598, -236.933], point + [398.059, -234.593], point + [398.5, -234.05]);
+    path21.cubicCurveTo(point + [399.273, -233.097], point + [398.516, -213.046], point + [397.5, -207.542]);
+    path21.cubicCurveTo(point + [397.266, -206.269], point + [397.453, -204.769], point + [397.918, -204.21]);
+    path21.cubicCurveTo(point + [398.383, -203.648], point + [399.141, -196.23], point + [399.602, -187.722]);
+    path21.cubicCurveTo(point + [400.063, -179.218], point + [400.824, -171.788], point + [401.293, -171.21]);
+    path21.cubicCurveTo(point + [402.289, -169.999], point + [402.145, -145.784], point + [401.117, -141.234]);
+    path21.cubicCurveTo(point + [400.668, -139.234], point + [400.785, -137.89], point + [401.5, -136.866]);
+    path21.cubicCurveTo(point + [402.191, -135.882], point + [402.723, -130.73], point + [403.094, -121.425]);
+    path21.cubicCurveTo(point + [403.504, -111.191], point + [403.973, -106.948], point + [404.848, -105.562]);
+    path21.cubicCurveTo(point + [405.816, -104.023], point + [406.016, -100.749], point + [405.891, -88.359]);
+    path21.cubicCurveTo(point + [405.625, -61.398], point + [406.68, -42.3], point + [408.566, -39.948]);
+    path21.cubicCurveTo(point + [409.832, -38.366], point + [409.254, -17.831], point + [407.848, -14.456]);
+    path21.cubicCurveTo(point + [406.801, -11.952], point + [404.875, -11.046], point + [403.91, -12.605]);
+    path21.closePath();
+
+    var path22 = new Path();
+    path22.moveTo(point + [395.035, -289.526]);
+    path22.cubicCurveTo(point + [394.738, -290.003], point + [394.898, -290.796], point + [395.387, -291.288]);
+    path22.cubicCurveTo(point + [396.043, -291.941], point + [396.277, -291.71], point + [396.277, -290.417]);
+    path22.cubicCurveTo(point + [396.277, -288.484], point + [395.863, -288.187], point + [395.035, -289.526]);
+    path22.closePath();
+
+    var path23 = new Path();
+    path23.moveTo(point + [392.789, -342.011]);
+    path23.cubicCurveTo(point + [391.836, -342.968], point + [392.273, -344.655], point + [393.48, -344.655]);
+    path23.cubicCurveTo(point + [394.141, -344.655], point + [394.68, -344.14], point + [394.68, -343.503]);
+    path23.cubicCurveTo(point + [394.68, -342.167], point + [393.535, -341.265], point + [392.789, -342.011]);
+    path23.closePath();
+
+    var path24 = new Path();
+    path24.moveTo(point + [390.426, -366.776]);
+    path24.cubicCurveTo(point + [389.625, -367.577], point + [389.758, -374.257], point + [390.578, -374.257]);
+    path24.cubicCurveTo(point + [391.543, -374.257], point + [392.496, -367.757], point + [391.656, -366.913]);
+    path24.cubicCurveTo(point + [391.281, -366.538], point + [390.727, -366.476], point + [390.426, -366.776]);
+    path24.closePath();
+
+    var path25 = new Path();
+    path25.moveTo(point + [390.434, -392.413]);
+    path25.cubicCurveTo(point + [390.219, -392.769], point + [389.918, -397.917], point + [389.762, -403.859]);
+    path25.cubicCurveTo(point + [389.52, -413.05], point + [389.656, -414.655], point + [390.68, -414.655]);
+    path25.cubicCurveTo(point + [391.664, -414.655], point + [391.922, -412.995], point + [392.113, -405.456]);
+    path25.cubicCurveTo(point + [392.242, -400.398], point + [392.422, -395.394], point + [392.512, -394.339]);
+    path25.cubicCurveTo(point + [392.676, -392.472], point + [391.219, -391.124], point + [390.434, -392.413]);
+    path25.closePath();
+
+    var path26 = new Path();
+    path26.moveTo(point + [397.621, -420.886]);
+    path26.cubicCurveTo(point + [396.918, -421.421], point + [395.945, -423.655], point + [395.461, -425.859]);
+    path26.cubicCurveTo(point + [394.98, -428.058], point + [392.887, -432.558], point + [390.816, -435.859]);
+    path26.cubicCurveTo(point + [385.891, -443.702], point + [380.859, -454.05], point + [381.48, -455.062]);
+    path26.cubicCurveTo(point + [382.145, -456.136], point + [385.09, -456.019], point + [387.219, -454.827]);
+    path26.cubicCurveTo(point + [390.098, -453.222], point + [399.512, -443.757], point + [399.02, -442.96]);
+    path26.cubicCurveTo(point + [398.77, -442.554], point + [399.098, -440.519], point + [399.75, -438.441]);
+    path26.cubicCurveTo(point + [400.406, -436.359], point + [401.129, -433.757], point + [401.355, -432.655]);
+    path26.cubicCurveTo(point + [401.582, -431.558], point + [402.164, -429.085], point + [402.648, -427.167]);
+    path26.cubicCurveTo(point + [403.313, -424.53], point + [403.293, -423.398], point + [402.57, -422.523]);
+    path26.cubicCurveTo(point + [400.863, -420.472], point + [398.988, -419.851], point + [397.621, -420.886]);
+    path26.closePath();
+
+    var path27 = new Path();
+    path27.moveTo(point + [384.949, -428.456]);
+    path27.cubicCurveTo(point + [383.996, -430.546], point + [383.07, -432.526], point + [382.898, -432.859]);
+    path27.cubicCurveTo(point + [382.727, -433.187], point + [382.941, -433.456], point + [383.379, -433.456]);
+    path27.cubicCurveTo(point + [384.492, -433.456], point + [387.145, -429.48], point + [387.777, -426.859]);
+    path27.cubicCurveTo(point + [388.641, -423.284], point + [386.852, -424.296], point + [384.949, -428.456]);
+    path27.closePath();
+
+    var path28 = new Path();
+    path28.moveTo(point + [380.766, -436.323]);
+    path28.cubicCurveTo(point + [380.012, -438.28], point + [380.176, -438.538], point + [381.48, -437.456]);
+    path28.cubicCurveTo(point + [382.809, -436.355], point + [383.07, -435.058], point + [381.965, -435.058]);
+    path28.cubicCurveTo(point + [381.57, -435.058], point + [381.031, -435.628], point + [380.766, -436.323]);
+    path28.closePath();
+
+    var path29 = new Path();
+    path29.moveTo(point + [346.32, -664.589]);
+    path29.cubicCurveTo(point + [346.063, -665.007], point + [346.195, -665.558], point + [346.609, -665.816]);
+    path29.cubicCurveTo(point + [347.027, -666.073], point + [347.578, -665.941], point + [347.836, -665.526]);
+    path29.cubicCurveTo(point + [348.094, -665.109], point + [347.965, -664.558], point + [347.547, -664.3]);
+    path29.cubicCurveTo(point + [347.129, -664.042], point + [346.578, -664.171], point + [346.32, -664.589]);
+    path29.closePath();
+
+    var path30 = new Path();
+    path30.moveTo(point + [219.723, -801.972]);
+    path30.cubicCurveTo(point + [219.496, -802.569], point + [219.52, -803.609], point + [219.781, -804.288]);
+    path30.cubicCurveTo(point + [220.047, -804.987], point + [219.742, -805.714], point + [219.066, -805.972]);
+    path30.cubicCurveTo(point + [215.684, -807.273], point + [219.047, -810.292], point + [228.199, -814.175]);
+    path30.cubicCurveTo(point + [234.445, -816.827], point + [236.555, -816.804], point + [232.879, -814.124]);
+    path30.cubicCurveTo(point + [231.668, -813.245], point + [230.68, -812.023], point + [230.68, -811.413]);
+    path30.cubicCurveTo(point + [230.68, -810.804], point + [229.598, -809.507], point + [228.277, -808.53]);
+    path30.cubicCurveTo(point + [226.957, -807.554], point + [225.879, -806.464], point + [225.879, -806.105]);
+    path30.cubicCurveTo(point + [225.879, -805.042], point + [228.656, -805.37], point + [230.324, -806.632]);
+    path30.cubicCurveTo(point + [233.652, -809.148], point + [234.172, -806.878], point + [231.105, -803.234]);
+    path30.cubicCurveTo(point + [229.352, -801.148], point + [228.625, -800.886], point + [224.637, -800.886]);
+    path30.cubicCurveTo(point + [221.59, -800.886], point + [220.008, -801.234], point + [219.723, -801.972]);
+    path30.closePath();
+
+    var path31 = new Path();
+    path31.moveTo(point + [203.055, -818.499]);
+    path31.cubicCurveTo(point + [200.844, -820.347], point + [199.043, -822.218], point + [199.055, -822.655]);
+    path31.cubicCurveTo(point + [199.07, -823.105], point + [200.66, -823.351], point + [202.68, -823.214]);
+    path31.cubicCurveTo(point + [204.66, -823.081], point + [208.078, -823.53], point + [210.277, -824.206]);
+    path31.cubicCurveTo(point + [215.039, -825.675], point + [215.48, -825.71], point + [215.48, -824.624]);
+    path31.cubicCurveTo(point + [215.48, -823.304], point + [208.984, -815.054], point + [207.984, -815.097]);
+    path31.cubicCurveTo(point + [207.484, -815.12], point + [205.27, -816.651], point + [203.055, -818.499]);
+    path31.closePath();
+
+    var path32 = new Path();
+    path32.moveTo(point + [187.867, -851.804]);
+    path32.cubicCurveTo(point + [188.207, -853.351], point + [187.949, -854.816], point + [187.109, -856.097]);
+    path32.cubicCurveTo(point + [185.609, -858.39], point + [186.344, -861.077], point + [189.5, -864.831]);
+    path32.cubicCurveTo(point + [190.59, -866.12], point + [191.48, -867.691], point + [191.48, -868.319]);
+    path32.cubicCurveTo(point + [191.48, -869.952], point + [193.094, -869.722], point + [195.148, -867.792]);
+    path32.cubicCurveTo(point + [197.66, -865.433], point + [203.055, -864.823], point + [205.098, -866.671]);
+    path32.cubicCurveTo(point + [206.617, -868.05], point + [206.742, -868.046], point + [208.363, -866.581]);
+    path32.cubicCurveTo(point + [210.242, -864.882], point + [213.078, -859.726], point + [213.078, -858.011]);
+    path32.cubicCurveTo(point + [213.078, -855.765], point + [210.266, -854.468], point + [204.383, -854.003]);
+    path32.cubicCurveTo(point + [197.855, -853.484], point + [196.715, -852.976], point + [199.086, -851.64]);
+    path32.cubicCurveTo(point + [200.621, -850.773], point + [200.605, -850.718], point + [198.68, -850.179]);
+    path32.cubicCurveTo(point + [197.578, -849.87], point + [194.582, -849.581], point + [192.016, -849.538]);
+    path32.lineTo(point + [187.352, -849.456]);
+    path32.closePath();
+
+    var path33 = new Path();
+    path33.moveTo(point + [177.48, -888.991]);
+    path33.cubicCurveTo(point + [174.395, -890.366], point + [171.023, -894.069], point + [170.387, -896.776]);
+    path33.cubicCurveTo(point + [169.977, -898.519], point + [170.391, -899.339], point + [172.699, -901.366]);
+    path33.cubicCurveTo(point + [174.242, -902.722], point + [176.418, -904.062], point + [177.531, -904.343]);
+    path33.cubicCurveTo(point + [182.652, -905.628], point + [192.625, -901.546], point + [193.57, -897.776]);
+    path33.cubicCurveTo(point + [194.484, -894.132], point + [193.27, -891.98], point + [189.094, -889.862]);
+    path33.cubicCurveTo(point + [184.707, -887.64], point + [181.105, -887.37], point + [177.48, -888.991]);
+    path33.closePath();
+
+    var path34 = new Path();
+    path34.moveTo(point + [213.258, -890.702]);
+    path34.cubicCurveTo(point + [212.277, -891.386], point + [211.48, -892.663], point + [211.48, -893.542]);
+    path34.cubicCurveTo(point + [211.48, -895.816], point + [213.566, -899.546], point + [215.652, -901.007]);
+    path34.cubicCurveTo(point + [217.684, -902.433], point + [222.832, -902.659], point + [225.133, -901.429]);
+    path34.cubicCurveTo(point + [227.152, -900.347], point + [227.113, -899.058], point + [225.059, -899.058]);
+    path34.cubicCurveTo(point + [224.063, -899.058], point + [223.145, -898.28], point + [222.672, -897.034]);
+    path34.cubicCurveTo(point + [221.727, -894.554], point + [219.867, -893.741], point + [218.234, -895.093]);
+    path34.cubicCurveTo(point + [216.375, -896.636], point + [214.762, -894.788], point + [216.098, -892.648]);
+    path34.cubicCurveTo(point + [218.109, -889.429], point + [216.574, -888.378], point + [213.258, -890.702]);
+    path34.closePath();
+
+    var path35 = new Path();
+    path35.moveTo(point + [160.789, -897.601]);
+    path35.cubicCurveTo(point + [160.172, -903.503], point + [158.086, -908.151], point + [155.879, -908.538]);
+    path35.cubicCurveTo(point + [153.281, -908.991], point + [150.82, -911.823], point + [149.457, -915.929]);
+    path35.cubicCurveTo(point + [147.945, -920.476], point + [148.637, -924.081], point + [151.832, -928.265]);
+    path35.cubicCurveTo(point + [152.957, -929.741], point + [153.879, -931.523], point + [153.879, -932.222]);
+    path35.cubicCurveTo(point + [153.879, -932.921], point + [154.777, -933.901], point + [155.879, -934.401]);
+    path35.cubicCurveTo(point + [159.316, -935.968], point + [158.105, -937.046], point + [151.336, -938.444]);
+    path35.cubicCurveTo(point + [147.738, -939.191], point + [144.297, -940.296], point + [143.688, -940.905]);
+    path35.cubicCurveTo(point + [142.746, -941.847], point + [142.918, -942.237], point + [144.832, -943.534]);
+    path35.cubicCurveTo(point + [146.629, -944.753], point + [148.52, -945.058], point + [154.277, -945.058]);
+    path35.lineTo(point + [161.48, -945.058]);
+    path35.lineTo(point + [161.977, -965.058]);
+    path35.cubicCurveTo(point + [162.488, -985.734], point + [162.953, -988.917], point + [166.27, -994.655]);
+    path35.cubicCurveTo(point + [169.031, -999.441], point + [177.668, -1007.284], point + [182.855, -1009.73]);
+    path35.cubicCurveTo(point + [193.734, -1014.847], point + [204.992, -1015.347], point + [222.277, -1011.476]);
+    path35.cubicCurveTo(point + [239.348, -1007.655], point + [248.063, -1001.773], point + [253.715, -990.257]);
+    path35.cubicCurveTo(point + [255.832, -985.944], point + [255.883, -985.468], point + [256.352, -966.257]);
+    path35.cubicCurveTo(point + [256.648, -953.956], point + [257.184, -945.784], point + [257.785, -944.319]);
+    path35.cubicCurveTo(point + [259.379, -940.433], point + [258.602, -939.859], point + [251.793, -939.859]);
+    path35.cubicCurveTo(point + [246.371, -939.859], point + [234.32, -938.741], point + [229.277, -937.773]);
+    path35.cubicCurveTo(point + [228.289, -937.581], point + [227.48, -937.073], point + [227.48, -936.64]);
+    path35.cubicCurveTo(point + [227.48, -935.109], point + [257.281, -936.511], point + [272.145, -938.737]);
+    path35.cubicCurveTo(point + [275.254, -939.206], point + [275.605, -939.101], point + [275.352, -937.784]);
+    path35.cubicCurveTo(point + [275.148, -936.73], point + [273.477, -935.831], point + [269.516, -934.64]);
+    path35.cubicCurveTo(point + [264.027, -932.995], point + [263.949, -932.933], point + [262.992, -929.417]);
+    path35.cubicCurveTo(point + [262.457, -927.456], point + [261.262, -923.878], point + [260.332, -921.456]);
+    path35.cubicCurveTo(point + [258.945, -917.843], point + [258.738, -916.089], point + [259.168, -911.636]);
+    path35.cubicCurveTo(point + [259.609, -907.038], point + [259.469, -905.972], point + [258.227, -904.601]);
+    path35.cubicCurveTo(point + [256.344, -902.519], point + [251.805, -900.362], point + [250.719, -901.03]);
+    path35.cubicCurveTo(point + [250.258, -901.316], point + [249.883, -903.78], point + [249.887, -906.503]);
+    path35.cubicCurveTo(point + [249.891, -911.077], point + [249.703, -911.612], point + [247.41, -913.499]);
+    path35.cubicCurveTo(point + [245.453, -915.109], point + [244.895, -916.234], point + [244.762, -918.823]);
+    path35.cubicCurveTo(point + [244.664, -920.691], point + [243.418, -924.421], point + [241.879, -927.456]);
+    path35.lineTo(point + [239.164, -932.804]);
+    path35.lineTo(point + [228.32, -932.237]);
+    path35.cubicCurveTo(point + [222.359, -931.929], point + [216.039, -931.183], point + [214.277, -930.577]);
+    path35.cubicCurveTo(point + [210.098, -929.144], point + [209.078, -929.179], point + [209.078, -930.761]);
+    path35.cubicCurveTo(point + [209.078, -931.839], point + [208.492, -931.98], point + [205.68, -931.566]);
+    path35.cubicCurveTo(point + [198.566, -930.526], point + [196.637, -930.026], point + [195.336, -928.886]);
+    path35.cubicCurveTo(point + [194.594, -928.237], point + [193.316, -927.929], point + [192.477, -928.194]);
+    path35.cubicCurveTo(point + [190.785, -928.73], point + [186.395, -926.855], point + [183.738, -924.456]);
+    path35.cubicCurveTo(point + [181.945, -922.843], point + [181.359, -922.831], point + [171.68, -924.241]);
+    path35.cubicCurveTo(point + [168.645, -924.683], point + [168.203, -924.538], point + [167.57, -922.898]);
+    path35.cubicCurveTo(point + [165.914, -918.616], point + [163.449, -906.148], point + [162.973, -899.655]);
+    path35.cubicCurveTo(point + [162.691, -895.808], point + [162.199, -892.655], point + [161.883, -892.655]);
+    path35.cubicCurveTo(point + [161.566, -892.655], point + [161.074, -894.882], point + [160.789, -897.601]);
+    path35.closePath();
+
+    var path36 = new Path();
+    path36.moveTo(point + [242.68, -941.859]);
+    path36.cubicCurveTo(point + [242.68, -942.515], point + [242.34, -943.058], point + [241.926, -943.058]);
+    path36.cubicCurveTo(point + [240.918, -943.058], point + [240.195, -941.808], point + [240.832, -941.167]);
+    path36.cubicCurveTo(point + [241.734, -940.269], point + [242.68, -940.62], point + [242.68, -941.859]);
+    path36.closePath();
+
+    var path37 = new Path();
+    path37.moveTo(point + [167.48, -905.097]);
+    path37.cubicCurveTo(point + [167.48, -907.913], point + [169.352, -911.273], point + [172.313, -913.761]);
+    path37.cubicCurveTo(point + [176.367, -917.171], point + [178.328, -917.257], point + [184.109, -914.257]);
+    path37.cubicCurveTo(point + [192.801, -909.753], point + [191.844, -907.484], point + [181.0, -906.862]);
+    path37.cubicCurveTo(point + [175.285, -906.538], point + [173.242, -906.085], point + [171.438, -904.753]);
+    path37.cubicCurveTo(point + [168.43, -902.53], point + [167.48, -902.612], point + [167.48, -905.097]);
+    path37.closePath();
+
+    var path38 = new Path();
+    path38.moveTo(point + [227.078, -906.237]);
+    path38.cubicCurveTo(point + [225.758, -906.562], point + [221.973, -906.651], point + [218.664, -906.437]);
+    path38.cubicCurveTo(point + [213.852, -906.124], point + [212.441, -906.296], point + [211.613, -907.296]);
+    path38.cubicCurveTo(point + [210.746, -908.339], point + [210.813, -908.671], point + [212.027, -909.308]);
+    path38.cubicCurveTo(point + [214.953, -910.843], point + [218.754, -911.155], point + [223.215, -910.23]);
+    path38.cubicCurveTo(point + [228.305, -909.171], point + [230.68, -907.976], point + [230.68, -906.464]);
+    path38.cubicCurveTo(point + [230.68, -905.37], point + [230.617, -905.366], point + [227.078, -906.237]);
+    path38.closePath();
+
+    var path39 = new Path();
+    path38.moveTo(point + [227.078, -906.237]);
+
+    var unsortedPathList = [path0, path1, path2, path3, path4, path5, path6, path7, path8, path9, path10, path11, path12, path13, path14, path15, path16, path17, path18, path19, path20, path21, path22, path23, path24, path25, path26, path27, path28, path29, path30, path31, path32, path33, path34, path35, path36, path37, path38, path39];
+    unsortedPathList = remove_empty_paths(unsortedPathList);
+    var sortedPathList = unsortedPathList.sort(sortOnBoundsSize);
+    var compoundPath = new CompoundPath(sortedPathList);
+    compoundPath.fillColor = 'black';
+    compoundPath.strokeColor = 'black';
+}
+draw_glyph_0();
+
+
+	</script>
+</head>
+<body>
+	<canvas id="canvas" width="1200" height="900"></canvas>
+
+</body>
+</html>
