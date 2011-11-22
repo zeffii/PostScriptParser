@@ -9,7 +9,7 @@ Their TOC implies that it's OK to write programs that parse their .ps filetype. 
 to support commands as i encounter them.
 
 20 Nov, Basic Parsing and javascript writer for commands (m/l/c/h)
-22 Nov, Added empty Path removal function, while debugging.
+22 Nov, Added empty Path removal function, while debugging. added g and rg (colour!)
 
 - [todo] Attempt to parse more than mlch cases..  line/width/dash
 
