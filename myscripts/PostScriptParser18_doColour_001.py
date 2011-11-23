@@ -151,6 +151,17 @@ def write_postscript_functions(newPath, functionName, writefile):
             rgb = ", ".join(colorData[:3])
             return "new RgbColor("+ rgb +")"
 
+    # helper function, sets the string value for command if (m|l|c)
+    def set_command_value(foundChar):
+        if foundChar == 'm':
+            command = ".moveTo("
+        elif foundChar == 'l':
+            command = ".lineTo("
+        elif foundChar == 'c':
+            command = ".cubicCurveTo("
+
+        return command
+
 
 
     # start writing this path (newPath) to the open file.
@@ -165,8 +176,7 @@ def write_postscript_functions(newPath, functionName, writefile):
             currentColour = parseColourLine(line)
             continue
         
-        
-        # print(line)
+
         lineArray = line.split()
 
         pathname = "path" + str(numPaths)
@@ -176,15 +186,11 @@ def write_postscript_functions(newPath, functionName, writefile):
             writefile.write(lineToPrint)
 
         foundChar = lineArray[-1]
-        if foundChar == 'm':
-            command = ".moveTo("
-        elif foundChar == 'l':
-            command = ".lineTo("
-        elif foundChar == 'c':
-            command = ".cubicCurveTo("
+        if foundChar in ["m", "l", "c"]:
+            command = set_command_value(foundChar)
             
         
-        if foundChar == 'm' or foundChar == 'l':
+        if foundChar in ['m', 'l']:
             coordinates = pointify_coordinates(lineArray[0:2])
 
             if lineCounter == len(newPath)-1:
@@ -308,9 +314,9 @@ def create_html(commandList, javaScriptFileName):
     writefile.write("<html>\n")
     writefile.write("<head>\n")
     writefile.write("	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n")
-    writefile.write("	<title>"+ title+ "</title>\n")
-    writefile.write("	<link rel=\"stylesheet\" href=\"../css/style2.css\">\n")
-    writefile.write("	<script type=\"text/javascript\" src=\"../../lib/paper.js\"></script>\n")
+    writefile.write("	<title>" + title + "</title>\n")
+    writefile.write("	<link rel=\"stylesheet\" href=\"css/style2.css\">\n")
+    writefile.write("	<script type=\"text/javascript\" src=\"lib/paper.js\"></script>\n")
     writefile.write("	<script type=\"text/paperscript\" canvas=\"canvas\">\n")
 
     # add the auto sorting functions for the compound path array, and empty path remover.
@@ -337,8 +343,8 @@ def create_html(commandList, javaScriptFileName):
 
 
 def init():    
-    javaScriptFileName = "drawing_infoGram2.html"
-    postScriptFileName = "infoGram2.ps"
+    javaScriptFileName = "outputs/drawing_infoGram2.html"
+    postScriptFileName = "ps/infoGram2.ps"
     fullString = get_postscript(postScriptFileName)
 
     if fullString != None:
