@@ -141,7 +141,7 @@ def write_postscript_functions(newPath, functionName, writefile):
         return "point + ["+str(myX)+ ', ' + str(myY) + "]"
 
     # helper function, parses the colour line.
-    def parseColourLine(line):
+    def parse_colour_line(line):
         colorData = line.split()
         if line.endswith(" g"):
             grayColor = 1.0 - float(colorData[0])
@@ -173,7 +173,7 @@ def write_postscript_functions(newPath, functionName, writefile):
         if line.endswith(" g") or line.endswith(" rg"):
             print("found colour information: " + line)
             global currentColour
-            currentColour = parseColourLine(line)
+            currentColour = parse_colour_line(line)
             continue
         
 
