@@ -61,11 +61,11 @@ def get_postscript(filename):
             usableFileString += line[:-1]
 
 
+    filedata.close()
+	
     if foundStartToken == False:
         return None
     
-    filedata.close()
-
     # at this point usableFileString contains all parsable lines, minus newline.
     # let's return usableFileString without trailing whitespace    
     return usableFileString.rstrip()
@@ -167,10 +167,9 @@ def write_postscript_functions(newPath, functionName, writefile):
         
         
         # print(line)
-        
         lineArray = line.split()
 
-        pathname = "path" + str(numPaths)    
+        pathname = "path" + str(numPaths)
         if lineCounter == 0:
             lineToPrint = indent + "var " + pathname + " = new Path();\n"
             pathNames.append(pathname)
