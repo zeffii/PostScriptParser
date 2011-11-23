@@ -21,6 +21,44 @@ rectHeight = 0
 currentColour = ""
 
 
+# helper function, deals with flipping the Y direction. 
+def pointify_coordinates(coordinates):
+    myX = float(coordinates[0])
+    myY = float(coordinates[1]) * -1.0
+    return "point + ["+str(myX)+ ', ' + str(myY) + "]"
+
+
+# helper function, parses the colour line.
+def parse_colour_line(line):
+    colorData = line.split()
+    if line.endswith(" g"):
+        grayColor = 1.0 - float(colorData[0])
+        return "new GrayColor(" + str(grayColor) + ")"    
+    if line.endswith(" rg"):
+        rgb = ", ".join(colorData[:3])
+        return "new RgbColor("+ rgb +")"
+
+
+# helper function, sets the string value for command if (m|l|c)
+def set_command_value(foundChar):
+    if foundChar == 'm':
+        command = ".moveTo("
+    elif foundChar == 'l':
+        command = ".lineTo("
+    elif foundChar == 'c':
+        command = ".cubicCurveTo("
+    return command
+
+
+# helper function to keep the main parsing function clean.
+def convert_to_curve_parameters(lineArray):
+    handle1 = pointify_coordinates(lineArray[:2])
+    handle2 = pointify_coordinates(lineArray[2:4])
+    destination = pointify_coordinates(lineArray[4:6])
+    return ", ".join([handle1, handle2, destination])
+    
+
+
 def get_postscript(filename):
     '''
     minimal error checking, until the script progresses
@@ -93,7 +131,6 @@ def regex_this_string(subString):
             cleanStringList.append("h")
         else:
             cleanStringList.append(i[0])
-
     return cleanStringList
 
 
@@ -119,6 +156,7 @@ def parse_postscript(fullString):
 
 
 
+
 def write_postscript_functions(newPath, functionName, writefile):
     '''
     Create separated functions for each path/compound path, probably a backwards way..
@@ -134,38 +172,8 @@ def write_postscript_functions(newPath, functionName, writefile):
     pathNames = []
     indent = "    "
 
-    # helper function, deals with flipping the Y direction. 
-    def pointify_coordinates(coordinates):
-        myX = float(coordinates[0])
-        myY = float(coordinates[1]) * -1.0
-        return "point + ["+str(myX)+ ', ' + str(myY) + "]"
-
-    # helper function, parses the colour line.
-    def parse_colour_line(line):
-        colorData = line.split()
-        if line.endswith(" g"):
-            grayColor = 1.0 - float(colorData[0])
-            return "new GrayColor(" + str(grayColor) + ")"
-        
-        if line.endswith(" rg"):
-            rgb = ", ".join(colorData[:3])
-            return "new RgbColor("+ rgb +")"
-
-    # helper function, sets the string value for command if (m|l|c)
-    def set_command_value(foundChar):
-        if foundChar == 'm':
-            command = ".moveTo("
-        elif foundChar == 'l':
-            command = ".lineTo("
-        elif foundChar == 'c':
-            command = ".cubicCurveTo("
-
-        return command
-
-
-
     # start writing this path (newPath) to the open file.
-    writefile.write(indent + "var point = new Point(0, "+rectHeight+");\n")
+    writefile.write(indent + "var point = new Point(0, " + rectHeight + ");\n")
 
     for line in newPath:
 
@@ -175,7 +183,6 @@ def write_postscript_functions(newPath, functionName, writefile):
             global currentColour
             currentColour = parse_colour_line(line)
             continue
-        
 
         lineArray = line.split()
 
@@ -205,13 +212,8 @@ def write_postscript_functions(newPath, functionName, writefile):
                 continue        
 
         if foundChar == 'c':
-            # print(lineArray)
-            handle1 = pointify_coordinates(lineArray[:2])
-            handle2 = pointify_coordinates(lineArray[2:4])
-            destination = pointify_coordinates(lineArray[4:6])
-            coordinates = ", ".join([handle1, handle2, destination])
-            lineToPrint = indent + pathname + command + coordinates + ");\n"
-            
+            coordinates = convert_to_curve_parameters(lineArray)
+            lineToPrint = indent + pathname + command + coordinates + ");\n" 
             lineCounter += 1
             writefile.write(lineToPrint)
             continue
@@ -343,7 +345,7 @@ def create_html(commandList, javaScriptFileName):
 
 
 def init():    
-    javaScriptFileName = "outputs/drawing_infoGram2.html"
+    javaScriptFileName = "outputs/drawing_igram2.html"
     postScriptFileName = "ps/infoGram2.ps"
     fullString = get_postscript(postScriptFileName)
 
