@@ -1,66 +1,54 @@
 '''
 20 Nov, Dealga McArdle. 2011
-This script is released under the MIT license. With no warranty/support of any kind.
+PostScript to JavaScript/paperJS converter written in Python.
 
-PostScript to javascript/paperjs converter written in Python. It should be
-obvious to anyone with a brain that Adobe and PostScript are registered trademarks.
-The Adobe PostScript References, PLRM.pdf, is available for free from their site.
-Their TOC implies that it's OK to write programs that parse their .ps filetype. I plan
-to support commands as i encounter them.
+This script is released under the MIT license. With no warranty/support of any kind.
+JavaScript, Adobe and PostScript are registered trademarks and property of their
+respective owners. The Adobe PostScript References, PLRM.pdf, is available for free
+from their site. Their TOC implies that it's OK to write programs that parse their
+.ps filetype. I plan to support commands as i encounter them.
 
 20 Nov, Basic Parsing and javascript writer for commands (m/l/c/h)
 22 Nov, Added empty Path removal function, while debugging. added g and rg (colour!)
+23 Nov, Pruning. Ignores a moveTo statement if it doesn't assist drawing.
+23 Nov, Mostly no empty paths are created, i'll retain the function as a fallback. 
 
-- [todo] don't create empty paths, negating the need to remove them from compoundPathList.
 - [todo] Attempt to parse more than mlch cases..  line/width/dash
 
 '''
 
 import re
+from PSHelper import pointify_coordinates
+from PSHelper import convert_to_curve_parameters
 
+from PSHelper import parse_colour_line
+from PSHelper import set_command_value
+from PSHelper import fix_plotListString
+from PSHelper import strip_strings_in_list
+
+from PSHelper import write_sorting_functions
+from PSHelper import write_empty_path_removal_function
+from PSHelper import write_html_header
+from PSHelper import write_html_footer
+
+
+'''Global Variables'''
+
+# bounds
 rectHeight = 0
 rectWidth = 0
+
+# shared between primitives and shapes
 currentColour = ""
 
+# primitives only
+strokeWidth = 1
+dashModeOn = False
+dashParameters = ""
 
-'''Helper Functions'''
+# markup
+indent = "    "
 
-# deals with flipping the Y direction. 
-def pointify_coordinates(coordinates):
-    myX = float(coordinates[0])
-    myY = float(coordinates[1]) * -1.0
-    return "point + ["+str(myX)+ ', ' + str(myY) + "]"
-
-
-# parses the colour line.
-def parse_colour_line(line):
-    colorData = line.split()
-    if line.endswith(" g"):
-        grayColor = 1.0 - float(colorData[0])
-        return "new GrayColor(" + str(grayColor) + ")"    
-    if line.endswith(" rg"):
-        rgb = ", ".join(colorData[:3])
-        return "new RgbColor("+ rgb +")"
-
-
-# sets the string value for command if (m|l|c)
-def set_command_value(foundChar):
-    if foundChar == 'm':
-        command = ".moveTo("
-    elif foundChar == 'l':
-        command = ".lineTo("
-    elif foundChar == 'c':
-        command = ".cubicCurveTo("
-    return command
-
-
-# keeps the main parsing function clean.
-def convert_to_curve_parameters(lineArray):
-    handle1 = pointify_coordinates(lineArray[:2])
-    handle2 = pointify_coordinates(lineArray[2:4])
-    destination = pointify_coordinates(lineArray[4:6])
-    return ", ".join([handle1, handle2, destination])
-    
 
 
 '''Work Functions'''
@@ -78,7 +66,6 @@ def get_postscript(filename):
     - thereafter the delimiter is f  (f is fill)  or h (to close path)
     - i will be ignoring colour. don't expect this parser to deal
     with anything other than black typography, kind of like a model T Ford.
-    
     '''
 
     
@@ -143,9 +130,48 @@ def regex_this_string(subString):
 
 
 
+def regex_plotListString(plotListString):
+    '''this function takes the second half of the instructions extracted from the ps
+
+    The function exists only because supporting more commands was a bit of an afterthought,
+    it requires some fixing by fix_plotListString due to zealous string chopping at the start.
+    It feels a little wonky, and it is, but this gives me some idea of what to do next.
+    Ultimately the initial parse pass should take care of both Paths and Shapes.
+
+    intput:     unformated primitive plot instructions like lines/dashes/circles
+    output:     after applying regular expressions the instructions are stored in a list and
+                can be used similarly to c;eanStringList
+    '''
+    
+    primitive_commands = re.compile(r"""
+
+        [0-9.]+\s[w]                        # value w = line width, and accepts int and floats
+    |   [-0-9.]+\s[JjmM]                    # value J = set line cap
+                                            # value j = set line join
+                                            # value M = set miter limit
+    |   [-0-9.]+\s[-0-9.]+\s[ml]            # value value m = move to
+                                            # value value l = line to
+    |   [[][-0-9. ]*[]][-0-9. ]+[d]\s\b     # [optional value] value d = set dash
+    |   [q][-0-9. ]+\s[c][m]                # q value value value value cm = no idea
+    |   [-0-9. ]+\s[c]                      # value*6 c = curve to
+    |   [S]                                 # S = set stroke
+    |   [Q]                                 # Q = seems to be a delimter.
+    |   [h]                                 # h = closePath();
+                        
+    """, re.VERBOSE)
+
+    m = primitive_commands.findall(plotListString)
+    mclean = []
+    for i in m:
+        mclean.append( i.lstrip())
+
+    return mclean
+
+
+
 def parse_postscript(fullString):
     '''
-    Takes the full concatenated version of the ps file and chops it up.
+    Takes the usable part of the ps file (without newlines) and chops it up.
 
     intput: takes full string from get_postscript function
     output: generates a list of discrete commands for every object found.
@@ -153,12 +179,22 @@ def parse_postscript(fullString):
     
     commandList = []
 
-    # because the last possible parsable character is also an f
-    # split creates one extra empty list member, [:-1] drops it.
+    # because the last possible parsable character is an f, warning bad naming convention! 
     commandListString = fullString.split(" f")[:-1]
     for item in commandListString:
         commandList.append(regex_this_string(item))
-    return commandList    
+
+    # plotList takes the last chunk, this seems to be the primitive path drawing (ie not shapes)
+    # should send extra regex here.
+    plotListString = fullString.split(" f")[-1]
+    plotListString = fix_plotListString(plotListString)
+
+    plotList = plotListString.split("Q")[:-1]
+    finalPlotList = []
+    for item in plotList:
+        finalPlotList.append(regex_plotListString(item))
+    
+    return commandList, finalPlotList    
 
 
 
@@ -168,6 +204,8 @@ def write_postscript_functions(newPath, functionName, writefile):
 
     input: parsed List of path commands for each glyph ( one glyph may contain 1 or more paths)
     output: adds functions to the currently open file.
+
+    This function should be extended to deal with line objects that have width and stroke properties.
     '''
 
     writefile.write("function " + functionName + "(){\n")
@@ -175,8 +213,7 @@ def write_postscript_functions(newPath, functionName, writefile):
     numPaths = 0
     lineCounter = 0
     pathNames = []
-    indent = "    "
-
+    
     # start writing this path (newPath) to the open file.
     writefile.write(indent + "var point = new Point(0, " + rectHeight + ");\n")
 
@@ -202,16 +239,14 @@ def write_postscript_functions(newPath, functionName, writefile):
         if foundChar in ['m', 'l']:
             coordinates = pointify_coordinates(lineArray[0:2])
             command = set_command_value(foundChar)
-            
-            if lineCounter == len(newPath)-1:
-                pathname = "path" + str(numPaths-1)
-                lineToPrint = indent + pathname + command + coordinates + ");\n"
-                writefile.write(lineToPrint)
+
+            # print(str(lineCounter) + "/" + str(len(newPath)))
+            if lineCounter >= len(newPath)-2:
                 break
             else:
                 lineToPrint = indent + pathname + command + coordinates + ");\n" 
-                writefile.write(lineToPrint)
                 lineCounter += 1
+                writefile.write(lineToPrint)
                 continue        
 
         # catches the cubicCurveTo string.
@@ -230,7 +265,7 @@ def write_postscript_functions(newPath, functionName, writefile):
             lineCounter += 1    
             writefile.write(lineToPrint)
 
-            if lineCounter is not len(newPath)-1:
+            if not lineCounter >= len(newPath)-2:
                 writefile.write("\n")
                 pathname = "path" + str(numPaths)  
                 lineToPrint = indent + "var " + pathname + " = new Path();\n"
@@ -258,87 +293,91 @@ def write_postscript_functions(newPath, functionName, writefile):
 
 
 
-def write_sorting_functions(writefile):
-    '''
-    unconfigurable, takes no parameters but writes path sorting function
-    '''
+def write_primitive_postScript(primitive, functionName, writefile):
+
+
+    global dashModeOn
+    global dashParameters
+
+    print("function " + functionName + "(){\n")
     
-    writefile.write("\n\
-function sortOnBoundsSize(p1, p2){\n\
-\n\
-    var x = (p1.bounds.width * p1.bounds.height);\n\
-    var y = (p2.bounds.width * p2.bounds.height);\n\
-\n\
-    if (x < y)\n\
-            return 1;\n\
-    else if (x==y)\n\
-            return 0;\n\
-    else\n\
-            return -1;\n\
-\n\
-}\n\n\n")
+    for instruction in primitive:
+
+        if instruction.startswith("[] 0.0 d"):
+            dashModeOn = False
+            print(indent + instruction + " (no dash)")
+            continue
+
+        if instruction.endswith("d"):
+            dashModeOn = True
+            # dashParameters = parse_dash_params(instruction)
+            print(indent + instruction + " (set dash)")
+            continue
+
+        if instruction.endswith("m"):
+            print(indent + instruction + " (a move to)")
+            continue
+
+        if instruction.endswith("l"):
+            print(indent + instruction + " (a line to ")
+            continue
+        
+        if instruction.endswith("c"):
+            print(indent + instruction + " (a cubicCurveTo)")
+            continue
+
+        if instruction.endswith("g"):
+            print(indent + instruction + " (a closePath()")
+            continue
+
+
+        # stroke information
+        if instruction.endswith("w"):
+            print(indent + instruction + " (a stroke width)")
+            continue
+
+        if instruction.endswith("S"):
+            print(indent + instruction + " (set stroke with current colour)")
+            continue
+
+        if instruction.endswith("J"):
+            print(indent + instruction + " (a line cap)")
+            continue
+
+        if instruction.endswith("j"):
+            print(indent + instruction + " (a line join)")
+            continue
+
+        if instruction.endswith("M"):
+            print(indent + instruction + " (set miter limit)")
+            continue
+
+        
+
+        # stroke closing
+        if instruction.endswith("h"):
+            print(indent + instruction + " (set closepath/stroke)")
+            continue
+
+
+        print("if you see this, time to support extra commands")
+        print(instruction)
+
+        
+    
+    print("\n}")
+    print(functionName + "();\n")
+    
+    return
 
 
 
-# TODO, this shouldn't happen. this is fix to poor ps parsing on my part.
-# but because i can't yet find a pattern in the reason it happens, i must deal with it like this.
-def write_empty_path_removal_function(writefile):
-    '''
-    takes the unsortedPathList which may contain an empty Path, this reflects my ignorance of javascript
-    '''
-
-    writefile.write("\n\
-function remove_empty_paths(unsortedPathList){\n\
-\n\
-    var validUnsortedPathList = [];\n\
-    for (var i = 0; i < unsortedPathList.length; i += 1){\n\
-        if (unsortedPathList[i].segments != 0){\n\
-            validUnsortedPathList.push(unsortedPathList[i]);\n\
-        }\n\
-        else{\n\
-            console.log(\"removed path\");\n\
-        }\n\
-    }\n\
-    return validUnsortedPathList;\n\
-\n\
-}\n\n\n")
-
-
-
-def write_html_header(writefile, fileName):
-    writefile.write("<!DOCTYPE html>\n")
-    writefile.write("<html>\n")
-    writefile.write("<head>\n")
-    writefile.write("	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n")
-    writefile.write("	<title>" + fileName + "</title>\n")
-    writefile.write("	<link rel=\"stylesheet\" href=\"css/style2.css\">\n")
-    writefile.write("	<script type=\"text/javascript\" src=\"lib/paper.js\"></script>\n")
-    writefile.write("	<script type=\"text/paperscript\" canvas=\"canvas\">\n")
-
-
-
-def write_html_footer(writefile):
-    # this could potentially read the information found in rectclip
-    # and set the canvas to those values
-    writefile.write("	</script>\n")
-    writefile.write("</head>\n")
-    writefile.write("<body>\n")
-    canvasDimensions = "width=\"" + rectWidth + "\" height=\"" + rectHeight + "\">"
-    writefile.write("	<canvas id=\"canvas\" " + canvasDimensions + "</canvas>\n")
-    writefile.write("\n")
-    writefile.write("</body>\n")
-    writefile.write("</html>\n")
-
-
-
-def create_file(commandList, fileName):
+def create_file(commandList, plotList, fileName):
     '''
     Takes a List of paths found in the .ps and makes js compatible syntax
 
     input:  Multidimensional list of strings similar to .ps commands
     output: Similar to input but formatted to be paperpJS readable.
-
-    m = moveTo, l = lineTo, c = cubicCurveTo, h = close
     '''
     
     writefile = open(fileName, 'w')
@@ -357,8 +396,17 @@ def create_file(commandList, fileName):
         write_postscript_functions(newPath, functionName, writefile)
         glyphCounter += 1
 
+    print(str(len(plotList)) + " primitives to plot")
+    primitiveCounter = 0
+    for primitive in plotList:
+        primitive = strip_strings_in_list(primitive)
+        functionName = "draw_primitive_" + str(primitiveCounter)
+        write_primitive_postScript(primitive, functionName, writefile)
+        primitiveCounter += 1
+
+
     if fileName.endswith(".html"):
-        write_html_footer(writefile)
+        write_html_footer(writefile, rectWidth, rectHeight)
 
     # done.
     writefile.close()
@@ -368,16 +416,15 @@ def create_file(commandList, fileName):
 def init():
     '''
     outputFileName can be a .js or a .html , in the case of html appropriate markup is added
-    
     '''
     
-    outputFileName = "outputs/drawing_igram4.html"
-    postScriptFileName = "ps/infoGram2.ps"
+    outputFileName = "outputs/drawing_GBI_extra.html"
+    postScriptFileName = "ps/typogratifying_extra.ps"
     fullString = get_postscript(postScriptFileName)
 
     if fullString != None:
-        commandList = parse_postscript(fullString)
-        create_file(commandList, outputFileName)
+        commandList, plotList = parse_postscript(fullString)
+        create_file(commandList, plotList, outputFileName)
         print("wrote " + outputFileName + " using " + postScriptFileName)
 
 

@@ -10,6 +10,7 @@ to support commands as i encounter them.
 
 20 Nov, Basic Parsing and javascript writer for commands (m/l/c/h)
 22 Nov, Added empty Path removal function, while debugging. added g and rg (colour!)
+23 Nov, pruning. but no real progress.
 
 - [todo] don't create empty paths, negating the need to remove them from compoundPathList.
 - [todo] Attempt to parse more than mlch cases..  line/width/dash
@@ -78,7 +79,6 @@ def get_postscript(filename):
     - thereafter the delimiter is f  (f is fill)  or h (to close path)
     - i will be ignoring colour. don't expect this parser to deal
     with anything other than black typography, kind of like a model T Ford.
-    
     '''
 
     
@@ -145,7 +145,7 @@ def regex_this_string(subString):
 
 def parse_postscript(fullString):
     '''
-    Takes the full concatenated version of the ps file and chops it up.
+    Takes the usable part of the ps file (without newlines) and chops it up.
 
     intput: takes full string from get_postscript function
     output: generates a list of discrete commands for every object found.
@@ -280,7 +280,7 @@ function sortOnBoundsSize(p1, p2){\n\
 
 
 
-# TODO, this shouldn't happen. this is fix to poor ps parsing on my part.
+# TODO, this shouldn't happen. this is a fix to poor ps parsing on my part.
 # but because i can't yet find a pattern in the reason it happens, i must deal with it like this.
 def write_empty_path_removal_function(writefile):
     '''
@@ -337,8 +337,6 @@ def create_file(commandList, fileName):
 
     input:  Multidimensional list of strings similar to .ps commands
     output: Similar to input but formatted to be paperpJS readable.
-
-    m = moveTo, l = lineTo, c = cubicCurveTo, h = close
     '''
     
     writefile = open(fileName, 'w')
@@ -368,7 +366,6 @@ def create_file(commandList, fileName):
 def init():
     '''
     outputFileName can be a .js or a .html , in the case of html appropriate markup is added
-    
     '''
     
     outputFileName = "outputs/drawing_igram4.html"

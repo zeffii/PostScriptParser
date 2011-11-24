@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>outputs/drawing_primitives_03.html</title>
+	<link rel="stylesheet" href="css/style2.css">
+	<script type="text/javascript" src="lib/paper.js"></script>
+	<script type="text/paperscript" canvas="canvas">
+
+function sortOnBoundsSize(p1, p2){
+
+    var x = (p1.bounds.width * p1.bounds.height);
+    var y = (p2.bounds.width * p2.bounds.height);
+
+    if (x < y)
+            return 1;
+    else if (x==y)
+            return 0;
+    else
+            return -1;
+
+}
+
+
+
+function remove_empty_paths(unsortedPathList){
+
+    var validUnsortedPathList = [];
+    for (var i = 0; i < unsortedPathList.length; i += 1){
+        if (unsortedPathList[i].segments != 0){
+            validUnsortedPathList.push(unsortedPathList[i]);
+        }
+        else{
+            console.log("removed path");
+        }
+    }
+    return validUnsortedPathList;
+
+}
+
+
+
+function draw_primitive_0(){
+    var point = new Point(0, 288);
+    var path = new Path();
+    path.strokeWidth = 0.8;
+    path.moveTo(point + [0.285, -164.781]);
+    path.lineTo(point + [162.621, -0.277]);
+    path.strokeColor = new GrayColor(1.0);
+}
+draw_primitive_0();
+
+function draw_primitive_1(){
+    var point = new Point(0, 288);
+    var path = new Path();
+    path.moveTo(point + [29.145, -287.438]);
+    path.lineTo(point + [184.27, -92.633]);
+    path.lineTo(point + [148.191, -240.539]);
+    path.strokeColor = new GrayColor(1.0);
+}
+draw_primitive_1();
+
+function draw_primitive_2(){
+    var point = new Point(0, 288);
+    var path = new Path();
+    path.dashArray = [0.4, 3.2];
+    path.moveTo(point + [356.707, -213.484]);
+    path.cubicCurveTo(point + [322.441, -205.145], point + [310.082, -275.895], point + [274.816, -275.895]);
+    path.cubicCurveTo(point + [239.551, -275.895], point + [210.965, -247.305], point + [210.965, -212.039]);
+    path.cubicCurveTo(point + [210.965, -176.773], point + [250.191, -139.906], point + [284.918, -133.758]);
+    path.cubicCurveTo(point + [378.625, -117.164], point + [425.25, -230.168], point + [356.707, -213.484]);
+    path.closePath();
+    path.moveTo(point + [356.707, -213.484]);
+    path.strokeColor = new RgbColor(1, 0.192157, 0);
+}
+draw_primitive_2();
+	</script>
+</head>
+<body>
+	<canvas id="canvas" width="390" height="288"></canvas>
+
+</body>
+</html>

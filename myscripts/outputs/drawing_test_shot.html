@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>outputs/drawing_test_shot.html</title>
+	<link rel="stylesheet" href="css/style2.css">
+	<script type="text/javascript" src="lib/paper.js"></script>
+	<script type="text/paperscript" canvas="canvas">
+
+function sortOnBoundsSize(p1, p2){
+
+    var x = (p1.bounds.width * p1.bounds.height);
+    var y = (p2.bounds.width * p2.bounds.height);
+
+    if (x < y)
+            return 1;
+    else if (x==y)
+            return 0;
+    else
+            return -1;
+
+}
+
+
+
+function remove_empty_paths(unsortedPathList){
+
+    var validUnsortedPathList = [];
+    for (var i = 0; i < unsortedPathList.length; i += 1){
+        if (unsortedPathList[i].segments != 0){
+            validUnsortedPathList.push(unsortedPathList[i]);
+        }
+        else{
+            console.log("removed path");
+        }
+    }
+    return validUnsortedPathList;
+
+}
+
+
+function draw_glyph_0(){
+    var point = new Point(0, 338);
+    var path0 = new Path();
+    path0.moveTo(point + [11.012, -328.229]);
+    path0.lineTo(point + [169.227, -337.939]);
+    path0.lineTo(point + [163.887, -175.357]);
+    path0.lineTo(point + [11.012, -175.357]);
+    path0.closePath();
+    path0.fillColor = new RgbColor(0.886275, 0.917647, 0.12549);
+}
+draw_glyph_0();
+
+
+function draw_glyph_1(){
+    var point = new Point(0, 338);
+    var path0 = new Path();
+    path0.moveTo(point + [189.18, -327.67]);
+    path0.lineTo(point + [342.055, -327.67]);
+    path0.lineTo(point + [342.055, -174.795]);
+    path0.lineTo(point + [189.664, -161.686]);
+    path0.closePath();
+    path0.fillColor = new RgbColor(0.376471, 0.380392, 0.333333);
+}
+draw_glyph_1();
+
+
+function draw_glyph_2(){
+    var point = new Point(0, 338);
+    var path0 = new Path();
+    path0.moveTo(point + [0.0, -163.068]);
+    path0.lineTo(point + [172.777, -166.467]);
+    path0.lineTo(point + [165.012, -0.002]);
+    path0.lineTo(point + [0.0, -0.002]);
+    path0.closePath();
+    path0.fillColor = new RgbColor(0.67451, 0.682353, 0.447059);
+}
+draw_glyph_2();
+
+
+function draw_glyph_3(){
+    var point = new Point(0, 338);
+    var path0 = new Path();
+    path0.moveTo(point + [276.855, -107.068]);
+    path0.cubicCurveTo(point + [276.855, -80.217], point + [274.023, -29.322], point + [247.172, -29.322]);
+    path0.cubicCurveTo(point + [220.324, -29.322], point + [179.625, -80.217], point + [179.625, -107.068]);
+    path0.cubicCurveTo(point + [179.625, -133.92], point + [201.391, -155.686], point + [228.242, -155.686]);
+    path0.cubicCurveTo(point + [255.09, -155.686], point + [276.855, -133.92], point + [276.855, -107.068]);
+    path0.closePath();
+    path0.fillColor = new RgbColor(0.105882, 0.501961, 0.219608);
+}
+draw_glyph_3();
+
+
+	</script>
+</head>
+<body>
+	<canvas id="canvas" width="343" height="338"></canvas>
+
+</body>
+</html>
