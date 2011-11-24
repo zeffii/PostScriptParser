@@ -16,7 +16,7 @@ from their site. Their TOC implies that it's OK to write programs that parse the
 24 Nov, make time to read PLRM.pdf... rewrote a lot of functions, some refactoring.
 
 
-currently the buggest bug is, items without a fill set are drawing with Y flipped, fixing it
+currently the biggest bug is, items without a fill set are drawing with Y flipped, fixing it
 makes for some crazy code so i'm going to learn how to be a better Python programmer instead.
 '''
 
