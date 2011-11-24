@@ -6,6 +6,26 @@ def pointify_coordinates(coordinates):
     myY = float(coordinates[1]) * -1.0
     return "point + ["+str(myX)+ ', ' + str(myY) + "]"
 
+# takes normal coordinates.
+def pointify_coordinates_flip(coordinates):
+    myX = float(coordinates[0])
+    myY = float(coordinates[1])
+    return "point + ["+str(myX)+ ', ' + str(myY) + "]"
+
+# keeps the main parsing function clean.
+def convert_to_curve_parameters(lineArray):
+    handle1 = pointify_coordinates(lineArray[:2])
+    handle2 = pointify_coordinates(lineArray[2:4])
+    destination = pointify_coordinates(lineArray[4:6])
+    return ", ".join([handle1, handle2, destination])
+
+
+def convert_to_curve_parameters_flip(lineArray):
+    handle1 = pointify_coordinates_flip(lineArray[:2])
+    handle2 = pointify_coordinates_flip(lineArray[2:4])
+    destination = pointify_coordinates(lineArray[4:6])
+    return ", ".join([handle1, handle2, destination])
+
 
 # parses the colour line.
 def parse_colour_line(line):
@@ -35,14 +55,6 @@ def set_command_value(foundChar):
     elif foundChar == 'c':
         command = ".cubicCurveTo("
     return command
-
-
-# keeps the main parsing function clean.
-def convert_to_curve_parameters(lineArray):
-    handle1 = pointify_coordinates(lineArray[:2])
-    handle2 = pointify_coordinates(lineArray[2:4])
-    destination = pointify_coordinates(lineArray[4:6])
-    return ", ".join([handle1, handle2, destination])
 
     
 '''Javascript Helper Functions'''
