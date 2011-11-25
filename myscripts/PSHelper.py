@@ -23,7 +23,7 @@ def convert_to_curve_parameters(lineArray):
 def convert_to_curve_parameters_flip(lineArray):
     handle1 = pointify_coordinates_flip(lineArray[:2])
     handle2 = pointify_coordinates_flip(lineArray[2:4])
-    destination = pointify_coordinates(lineArray[4:6])
+    destination = pointify_coordinates_flip(lineArray[4:6])
     return ", ".join([handle1, handle2, destination])
 
 
