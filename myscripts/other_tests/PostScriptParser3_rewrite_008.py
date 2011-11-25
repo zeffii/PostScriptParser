@@ -231,6 +231,9 @@ def write_primary_postScript(primitive, functionName, writefile):
                 lineToWrite = indent + "var unsortedList = [" + pathListString + "];\n"
                 writefile.write(lineToWrite)
 
+                lineToWrite = indent + "unsortedList = remove_empty_paths(unsortedList);\n"
+                writefile.write(lineToWrite)
+
                 lineToWrite = indent + "var sortedList = unsortedList.sort(sortOnBoundsSize);\n"
                 writefile.write(lineToWrite)
                 
@@ -471,8 +474,8 @@ def init():
     global rectWidth
     global rectHeight
     
-    outputFileName = "outputs/rewrite_TypeTest3.html"
-    postScriptFileName = "ps/TypeTest2.ps"
+    outputFileName = "outputs/rewrite_kharing3.html"
+    postScriptFileName = "ps/kharing3.ps"
     fullString, rectWidth, rectHeight = get_postscript(postScriptFileName)
 
     if fullString != None:

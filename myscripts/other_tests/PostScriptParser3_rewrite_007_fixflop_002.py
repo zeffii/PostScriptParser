@@ -294,19 +294,29 @@ def write_secondary_postScript(primitive, functionName, writefile):
 
     
     writefile.write("\nfunction " + functionName + "(){\n")
-    writefile.write(indent + "var point = new Point(0, " + rectHeight + ");\n")
+
+    # in caps because it's a stupid solution, and this reminds me to fix it.
+    FLIPPED = True
+    for instruction in primitive:
+        print(instruction  + "ENDLINE")
+        
+        if instruction == "f":
+            FLIPPED = False
+            break
+        else:
+            continue
+
+    if not FLIPPED:
+        writefile.write(indent + "var point = new Point(0, " + rectHeight + ");\n")
+    else:
+        writefile.write(indent + "var point = new Point(0.0, 0.0);\n")
 
     # each time this function is called, it means a new path primitive is
     # being requested. each primitive only has one path
     writefile.write(indent + "var path = new Path();\n")
 
-    # in caps because it's a stupid solution, and this reminds me to fix it.
-    FLIPPED = True
-    for instruction in primitive:
-        if instruction == 'f':
-            FLIPPED = False
-            break
-    
+
+    print("====")
     
     for instruction in primitive:
 
@@ -461,7 +471,7 @@ def init():
     global rectWidth
     global rectHeight
     
-    outputFileName = "outputs/rewrite_TypeTest2.html"
+    outputFileName = "outputs/rewrite_TypeTest3.html"
     postScriptFileName = "ps/TypeTest2.ps"
     fullString, rectWidth, rectHeight = get_postscript(postScriptFileName)
 

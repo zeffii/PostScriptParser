@@ -56,6 +56,8 @@ dashParameters = ""
 # markup
 indent = "    "
 
+# mode, set to true will set each path to path.selected = true;
+DEBUG = False
 
 
 
@@ -165,7 +167,8 @@ def write_primary_postScript(primitive, functionName, writefile):
     # each time this function is called, it means a new path primitive is
     # being requested. each primitive only has one path
     writefile.write(indent + "var path0 = new Path();\n")
-
+    if DEBUG:
+        writefile.write(indent + "path0.selected = true;\n")
 
 
     # transverse the primitive
@@ -231,6 +234,9 @@ def write_primary_postScript(primitive, functionName, writefile):
                 lineToWrite = indent + "var unsortedList = [" + pathListString + "];\n"
                 writefile.write(lineToWrite)
 
+                lineToWrite = indent + "unsortedList = remove_empty_paths(unsortedList);\n"
+                writefile.write(lineToWrite)
+
                 lineToWrite = indent + "var sortedList = unsortedList.sort(sortOnBoundsSize);\n"
                 writefile.write(lineToWrite)
                 
@@ -253,9 +259,9 @@ def write_primary_postScript(primitive, functionName, writefile):
                 pathCounter += 1
                 pathName = "path"+str(pathCounter)
                 writefile.write(indent + "var " + pathName + " = new Path();\n") 
-
-                # print(lineToWrite)
-            continue
+                if DEBUG:
+                    writefile.write(indent + pathName + ".selected = true;\n")
+                continue
 
         
         print(instruction + "### uncaught" )
@@ -471,8 +477,8 @@ def init():
     global rectWidth
     global rectHeight
     
-    outputFileName = "outputs/rewrite_TypeTest3.html"
-    postScriptFileName = "ps/TypeTest2.ps"
+    outputFileName = "outputs/rewrite_drawing_kh5.html"
+    postScriptFileName = "ps/drawing_kh4.ps"
     fullString, rectWidth, rectHeight = get_postscript(postScriptFileName)
 
     if fullString != None:
