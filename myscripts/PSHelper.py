@@ -1,29 +1,18 @@
 '''Helper Functions'''
 
 # deals with flipping the Y direction. 
-def pointify_coordinates(coordinates):
-    myX = float(coordinates[0])
-    myY = float(coordinates[1]) * -1.0
-    return "point + ["+str(myX)+ ', ' + str(myY) + "]"
-
-# takes normal coordinates.
-def pointify_coordinates_flip(coordinates):
+def pointify_coordinates(coordinates, FLIPPED):
     myX = float(coordinates[0])
     myY = float(coordinates[1])
+    if FLIPPED:
+        myY *= -1.0
     return "point + ["+str(myX)+ ', ' + str(myY) + "]"
 
 # keeps the main parsing function clean.
-def convert_to_curve_parameters(lineArray):
-    handle1 = pointify_coordinates(lineArray[:2])
-    handle2 = pointify_coordinates(lineArray[2:4])
-    destination = pointify_coordinates(lineArray[4:6])
-    return ", ".join([handle1, handle2, destination])
-
-
-def convert_to_curve_parameters_flip(lineArray):
-    handle1 = pointify_coordinates_flip(lineArray[:2])
-    handle2 = pointify_coordinates_flip(lineArray[2:4])
-    destination = pointify_coordinates_flip(lineArray[4:6])
+def convert_to_curve_parameters(lineArray, FLIPPED):
+    handle1 = pointify_coordinates(lineArray[:2], FLIPPED)
+    handle2 = pointify_coordinates(lineArray[2:4], FLIPPED)
+    destination = pointify_coordinates(lineArray[4:6], FLIPPED)
     return ", ".join([handle1, handle2, destination])
 
 
