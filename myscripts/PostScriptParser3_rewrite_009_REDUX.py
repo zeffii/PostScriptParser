@@ -12,12 +12,10 @@ from Adobe.com. Their TOC implies that it's OK to write programs that parse thei
 22 Nov, Added empty Path removal function, while debugging. added g and rg (colour!)
 23 Nov, Pruning. Ignores a moveTo statement if it doesn't assist drawing.
 23 Nov, Mostly no empty paths are created, i'll retain the function as a fallback.
-24 Nov, bug in primitives, using a fillcoulour in primitives will fail. [fixed]
+24 Nov, bug in primitives, using a fillcolour in primitives will fail. [fixed]
 24 Nov, make time to read PLRM.pdf... rewrote a lot of functions, some refactoring.
 
 
-currently the biggest bug is, items without a fill set are drawing with Y flipped, fixing it
-makes for some crazy code so i'm going to learn how to be a better Python programmer instead.
 '''
 
 import re
@@ -467,8 +465,8 @@ def init():
     global rectWidth
     global rectHeight
     
-    outputFileName = "outputs/redux_typetest4.html"
-    postScriptFileName = "ps/typetest4.ps"
+    outputFileName = "outputs/redux_tesla.html"
+    postScriptFileName = "ps/drawing_tesla.ps"
     fullString, rectWidth, rectHeight = get_postscript(postScriptFileName)
 
     if fullString != None:
