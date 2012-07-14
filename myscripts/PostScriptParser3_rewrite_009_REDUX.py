@@ -103,7 +103,7 @@ def parse_postscript(fullString):
     output: generates 2 lists primary and secondary commands (filled and non filled objects)
 
     it seems we can split by f, and if any member of the newly created array contains Q's
-    that means we are already deep intside primitive territory. this may be a poor assumption.
+    that means we are already deep inside primitive territory. this may be a poor assumption.
     '''
 
     fullString = fullString.replace('\n', ' ')
